@@ -1,0 +1,441 @@
+{
+  "worship": {
+    "place": "Casey Community Center",
+    "address": "810 S. Frederick Ave. (2nd Floor: Aspen Room)",
+    "city": "Gaithersburg, MD 20877",
+    "time": "Services Begin on Saturday at 1:45PM",
+    "phone": "240-780-6910",
+    "email": "info@cgimaryland.org",
+    "directions": "https://www.google.com/maps/place/Casey+Community+Center/@39.124029,-77.181646,15z/data=!4m2!3m1!1s0x0:0x52be6355b9cc8394",
+    "virtual": "Virtual Meeting (GoTo Meeting): To join us, click the “View Calendar” button below and click on the title of the event."
+  },
+  "scripture": "“If thou turn away thy foot from the Sabbath, from doing thy pleasure on my holy day; and call the sabbath a delight, the holy of the LORD, honourable; and shalt honour him, not doing thine own ways, nor finding thine own pleasure, nor speaking thine own words: Then shalt thou delight thyself in the LORD; and I will cause thee to ride upon the high places of the earth, and feed thee with the heritage of Jacob thy father: for the mouth of the LORD hath spoken it.”\n\nISAIAH 58:13-14",
+  "beliefs": [
+    {
+      "title": "GOD",
+      "body": "God is the supreme creator and sustainer of the entire universe who is eternal, all present, and all powerful.\n\nPsalm 19:1; 50:6-7; Isaiah 44:6; Nehemiah 9:6,16-17; John 1:12-13; 3:16; 1 John 4:8; Romans 1:20; Colossians 1:16; Hebrews 1:1-2; 1John 3:1-2",
+      "text": "God is the supreme creator and sustainer of the entire universe who is eternal, all present, and all powerful.",
+      "verses": "Psalm 19:1; 50:6-7; Isaiah 44:6; Nehemiah 9:6,16-17; John 1:12-13; 3:16; 1 John 4:8; Romans 1:20; Colossians 1:16; Hebrews 1:1-2; 1John 3:1-2"
+    },
+    {
+      "title": "BIBLE",
+      "body": "The entire Bible is the divinely inspired Word of God which contains His plan of salvation, and the record of His participation in history. The Bible is God’s method of revealing knowledge that man cannot discover for himself; the foundation of knowledge and the guidebook of life. God’s written Word, is revealed in two parts, the Old and New Testaments.\n\nDeuteronomy 8:3; Matthew 4:4; Luke 4:4; John 17:17; Romans 8:16; 1Corinthians 2:7-11; 2Timothy 3:16-17; 2 Peter 1:20)",
+      "text": "The entire Bible is the divinely inspired Word of God which contains His plan of salvation, and the record of His participation in history. The Bible is God’s method of revealing knowledge that man cannot discover for himself; the foundation of knowledge and the guidebook of life. God’s written Word, is revealed in two parts, the Old and New Testaments.",
+      "verses": "Deuteronomy 8:3; Matthew 4:4; Luke 4:4; John 17:17; Romans 8:16; 1Corinthians 2:7-11; 2Timothy 3:16-17; 2 Peter 1:20)"
+    },
+    {
+      "title": "JESUS CHRIST",
+      "body": "Jesus of Nazareth is the Christ, the Son of God and the Son of man. He is the Messiah who was prophesied in the Old Testament and described in the New Testament as being fully human and fully divine. He then died for the sins of all mankind as our loving and merciful Savior. He was then resurrected and ascended to heaven to become our Lord and High Priest. Jesus Christ will return to earth to establish the Kingdom of God where He will rule as King of kings with His saints as co-rulers forever.\n\nDeuteronomy 18:15; Matthew 17:15-17; John 1:1-14; 3:16; Acts 2:32-33; Romans 5:8; Philippians 2:7; Hebrews 4:14-15; Revelation 1:13-16",
+      "text": "Jesus of Nazareth is the Christ, the Son of God and the Son of man. He is the Messiah who was prophesied in the Old Testament and described in the New Testament as being fully human and fully divine. He then died for the sins of all mankind as our loving and merciful Savior. He was then resurrected and ascended to heaven to become our Lord and High Priest. Jesus Christ will return to earth to establish the Kingdom of God where He will rule as King of kings with His saints as co-rulers forever.",
+      "verses": "Deuteronomy 18:15; Matthew 17:15-17; John 1:1-14; 3:16; Acts 2:32-33; Romans 5:8; Philippians 2:7; Hebrews 4:14-15; Revelation 1:13-16"
+    },
+    {
+      "title": "THE HOLY SPIRIT",
+      "body": "The Holy Spirit is the spiritual extension of God, containing the essence, power and mind of ‘ God. The Holy Spirit spiritually strengthens Christians, converting their minds to be more like God’s mind.\n\nActs 1:8; 2:38; Romans 8:9, 14; 1Corinthians 2:16; Ephesians 1:13-14",
+      "text": "The Holy Spirit is the spiritual extension of God, containing the essence, power and mind of ‘ God. The Holy Spirit spiritually strengthens Christians, converting their minds to be more like God’s mind.",
+      "verses": "Acts 1:8; 2:38; Romans 8:9, 14; 1Corinthians 2:16; Ephesians 1:13-14"
+    },
+    {
+      "title": "MANKIND",
+      "body": "Humans have no inherent immortality as flesh and blood physical beings; however, they can receive eternal life as a free gift from our loving and merciful creator.\n\nGenesis 1:26-2; Job 32:8; 1Corinthians 2:11; 1John 5:11-13",
+      "text": "Humans have no inherent immortality as flesh and blood physical beings; however, they can receive eternal life as a free gift from our loving and merciful creator.",
+      "verses": "Genesis 1:26-2; Job 32:8; 1Corinthians 2:11; 1John 5:11-13"
+    },
+    {
+      "title": "ANGELIC REALM",
+      "body": "The angels were created by God as powerful spirit beings then used by God as His agents and messengers. These spirit beings also function as ministering spirits, helping mankind attain salvation and have done so since man’s creation. Like mankind, angels also have free moral agency. Although angels were created to help God, some of them, led by Satan the devil, rebelled against God and His government. Their rebellious acts caused them to be transformed into demons.\n\nPsalm 91:11-12; Ephesians 6:12; Hebrews 1:7",
+      "text": "The angels were created by God as powerful spirit beings then used by God as His agents and messengers. These spirit beings also function as ministering spirits, helping mankind attain salvation and have done so since man’s creation. Like mankind, angels also have free moral agency. Although angels were created to help God, some of them, led by Satan the devil, rebelled against God and His government. Their rebellious acts caused them to be transformed into demons.",
+      "verses": "Psalm 91:11-12; Ephesians 6:12; Hebrews 1:7"
+    },
+    {
+      "title": "SALVATION",
+      "body": "The penalty for sin is death, but salvation is the means by which God saves mankind from the penalty of sin so that he may be given eternal life. Working through His Son, Jesus Christ, the salvation process includes one’s calling, repentance, baptism, justification, receiving of the Holy Spirit, then living a life of faith and obedience. Salvation is a gift freely given through grace by God, with our ultimate reward given according to our works.\n\nMatthew 16:27; John 3:16-17; Romans 6:23; Ephesians 2:8-9; Hebrews 6:1-2",
+      "text": "The penalty for sin is death, but salvation is the means by which God saves mankind from the penalty of sin so that he may be given eternal life. Working through His Son, Jesus Christ, the salvation process includes one’s calling, repentance, baptism, justification, receiving of the Holy Spirit, then living a life of faith and obedience. Salvation is a gift freely given through grace by God, with our ultimate reward given according to our works.",
+      "verses": "Matthew 16:27; John 3:16-17; Romans 6:23; Ephesians 2:8-9; Hebrews 6:1-2"
+    },
+    {
+      "title": "FAITH",
+      "body": "Faith is the absolute knowledge that God exists and that He can and will fulfill His promises. Faith is necessary for salvation, of which, the basic elements are courage, action, and risk.\n\nRomans 1:17; 10:17; Ephesians 3:17; Hebrews 11:1-2; James 2:22-24",
+      "text": "Faith is the absolute knowledge that God exists and that He can and will fulfill His promises. Faith is necessary for salvation, of which, the basic elements are courage, action, and risk.",
+      "verses": "Romans 1:17; 10:17; Ephesians 3:17; Hebrews 11:1-2; James 2:22-24"
+    },
+    {
+      "title": "REPENTANCE",
+      "body": "Repentance is the act of acknowledging one’s sins, and then resolving to fully obey God and then is manifested by positive change. It begins when God opens a person’s mind to see himself in comparison with God and His law. True repentance is the first step toward reconciliation with God, and therefore ultimate salvation.\n\nActs 2:38; 3:19-21; 8:22; 1John 3:4",
+      "text": "Repentance is the act of acknowledging one’s sins, and then resolving to fully obey God and then is manifested by positive change. It begins when God opens a person’s mind to see himself in comparison with God and His law. True repentance is the first step toward reconciliation with God, and therefore ultimate salvation.",
+      "verses": "Acts 2:38; 3:19-21; 8:22; 1John 3:4"
+    },
+    {
+      "title": "BAPTISM",
+      "body": "Baptism is a ceremony, symbolizing the renunciation of the past sinful way of life, the burial of the old man in a watery grave, and the emergence of a new, Spirit-led person living with Christ’s mind and following in His footsteps. The ceremony can only take place after true repentance and acceptance of Christ’s sacrifice, then by full immersion in the symbolic watery grave. After this ceremony, and as a result of all these actions, one receives the baptism of the Holy Spirit through the laying on of hands.\n\nMatthew 3:13-16; Acts 2:38; Romans 6:1-8; Colossians 2:12",
+      "text": "Baptism is a ceremony, symbolizing the renunciation of the past sinful way of life, the burial of the old man in a watery grave, and the emergence of a new, Spirit-led person living with Christ’s mind and following in His footsteps. The ceremony can only take place after true repentance and acceptance of Christ’s sacrifice, then by full immersion in the symbolic watery grave. After this ceremony, and as a result of all these actions, one receives the baptism of the Holy Spirit through the laying on of hands.",
+      "verses": "Matthew 3:13-16; Acts 2:38; Romans 6:1-8; Colossians 2:12"
+    },
+    {
+      "title": "LAYING ON OF HANDS",
+      "body": "The laying on of hands is an act performed for the receiving of God’s Holy Spirit after baptism, at ordinations, anointing of the sick, or for other special purposes.\n\nMatthew 19:13-15; Acts 6:5-6; 8:17-18; 13:3; 1Timothy 4:14; Hebrews 6:2",
+      "text": "The laying on of hands is an act performed for the receiving of God’s Holy Spirit after baptism, at ordinations, anointing of the sick, or for other special purposes.",
+      "verses": "Matthew 19:13-15; Acts 6:5-6; 8:17-18; 13:3; 1Timothy 4:14; Hebrews 6:2"
+    },
+    {
+      "title": "KINGDOM OF GOD",
+      "body": "The Kingdom of God is the government of God ruled by the family of God. It will be the world ruling government set up by Jesus Christ upon His return. Jesus Christ will be the King of Kings and will rule for all eternity with the resurrected spirit-composed saints ruling with Him. In the New Testament, the Kingdom of God is referred to as a “mystery”. It was first preached and explained by Christ, then by His church. The Kingdom of God will be established on earth for a thousand years following Christ’s return. It shall be complete when God the Father come down out of heaven to dwell on the New Earth.\n\nMark 4:11; Revelation 5:10; 20:4; 21:1-3, 7, 10",
+      "text": "The Kingdom of God is the government of God ruled by the family of God. It will be the world ruling government set up by Jesus Christ upon His return. Jesus Christ will be the King of Kings and will rule for all eternity with the resurrected spirit-composed saints ruling with Him. In the New Testament, the Kingdom of God is referred to as a “mystery”. It was first preached and explained by Christ, then by His church. The Kingdom of God will be established on earth for a thousand years following Christ’s return. It shall be complete when God the Father come down out of heaven to dwell on the New Earth.",
+      "verses": "Mark 4:11; Revelation 5:10; 20:4; 21:1-3, 7, 10"
+    },
+    {
+      "title": "GOSPEL",
+      "body": "The gospel is the message preached by Jesus Christ and His church about the history of Jesus Christ and the future coming Kingdom of God to be established by Jesus Christ, the restoration of God’s government on earth, and how mankind can enter that Kingdom. It includes the message of what Jesus Christ has done in the past, is doing now, and shall do. The primary purpose and commission of God’s church is to “Go ye therefore, and teach (make disciples of) all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Spirit.”\n\nMatthew 3:2; 24:14; 28:19-20; Mark 1:15; Luke 24:47",
+      "text": "The gospel is the message preached by Jesus Christ and His church about the history of Jesus Christ and the future coming Kingdom of God to be established by Jesus Christ, the restoration of God’s government on earth, and how mankind can enter that Kingdom. It includes the message of what Jesus Christ has done in the past, is doing now, and shall do. The primary purpose and commission of God’s church is to “Go ye therefore, and teach (make disciples of) all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Spirit.”",
+      "verses": "Matthew 3:2; 24:14; 28:19-20; Mark 1:15; Luke 24:47"
+    },
+    {
+      "title": "RESURRECTIONS",
+      "body": "The hope of all mankind and the promise to the Christian is that they will be resurrected from the dead. The Bible refers to four resurrections. (1) the resurrection of Jesus Christ, the firstborn of God and man from the dead to become the pioneer of our salvation; (2) the resurrection of the saints at the return of Jesus Christ when the true believers shall become spirit-composed members of God’s family. This is called the “first resurrection” (3) the resurrection of all who have ever died without having understood God’s way, back to physical life for their first opportunity for salvation; this is called the “second resurrection” (4) the resurrection of those who have refused to repent and have rejected God’s way and are called the incorrigibly wicked, to be consumed in the lake of fire. This is called the “second death”.\n\nJohn 5:28-29; Acts 2:32; Romans 8:11; 1Corinthians 15:20; 1Thessalonians 4:13-17; Revelation 20:4-6, 13-14",
+      "text": "The hope of all mankind and the promise to the Christian is that they will be resurrected from the dead. The Bible refers to four resurrections. (1) the resurrection of Jesus Christ, the firstborn of God and man from the dead to become the pioneer of our salvation; (2) the resurrection of the saints at the return of Jesus Christ when the true believers shall become spirit-composed members of God’s family. This is called the “first resurrection” (3) the resurrection of all who have ever died without having understood God’s way, back to physical life for their first opportunity for salvation; this is called the “second resurrection” (4) the resurrection of those who have refused to repent and have rejected God’s way and are called the incorrigibly wicked, to be consumed in the lake of fire. This is called the “second death”.",
+      "verses": "John 5:28-29; Acts 2:32; Romans 8:11; 1Corinthians 15:20; 1Thessalonians 4:13-17; Revelation 20:4-6, 13-14"
+    },
+    {
+      "title": "JUDGMENT",
+      "body": "The time of a person’s judgment is the time of his opportunity for salvation. That begins from the time a person receives the Holy Spirit until his death; or, is changed into spirit upon Jesus Christ’s return. The overwhelming majority shall qualify for God’s Kingdom and will inherit eternal life, but those who deliberately reject God’s way shall suffer the second death and be consumed in the lake of fire.\n\nMatthew 13:49-50; 25:34; 1Peter4:17; Revelation 20:15; 21:8",
+      "text": "The time of a person’s judgment is the time of his opportunity for salvation. That begins from the time a person receives the Holy Spirit until his death; or, is changed into spirit upon Jesus Christ’s return. The overwhelming majority shall qualify for God’s Kingdom and will inherit eternal life, but those who deliberately reject God’s way shall suffer the second death and be consumed in the lake of fire.",
+      "verses": "Matthew 13:49-50; 25:34; 1Peter4:17; Revelation 20:15; 21:8"
+    },
+    {
+      "title": "LAW OF GOD",
+      "body": "The law of God is a perfect expression of God’s love toward man. It is a good, right, and perfect system of eternal directives and principles that reflects God’s character and love. God’s law teaches mankind how to properly worship God, how to love his fellowman, how to live an abundant life, and how to prepare for an eternal spiritual life as a full member of the family of God. The law of God is taught in both the Old and the New Testaments. It requires both physical actions and spiritual convictions.\n\nJohn 14:15, 21; Romans 7:12; 1John 5:2-3",
+      "text": "The law of God is a perfect expression of God’s love toward man. It is a good, right, and perfect system of eternal directives and principles that reflects God’s character and love. God’s law teaches mankind how to properly worship God, how to love his fellowman, how to live an abundant life, and how to prepare for an eternal spiritual life as a full member of the family of God. The law of God is taught in both the Old and the New Testaments. It requires both physical actions and spiritual convictions.",
+      "verses": "John 14:15, 21; Romans 7:12; 1John 5:2-3"
+    },
+    {
+      "title": "BIBLICAL COVENANTS",
+      "body": "Both the Old and New Testaments record that God made certain specific “contracts“ or promises called “covenants” with mankind. These covenants define the terms of God’s relationship with individuals and groups in various circumstances and eras throughout mankind’s history. The best-known covenants were made with the physical nation of Israel. That covenant was re-established as the New Covenant with “better promises” and will be fully confirmed with spiritual Israel after the return of Jesus Christ.\n\nMatthew 5:21-22; 2Timothy 3:15-16; Hebrews 8:6-13",
+      "text": "Both the Old and New Testaments record that God made certain specific “contracts“ or promises called “covenants” with mankind. These covenants define the terms of God’s relationship with individuals and groups in various circumstances and eras throughout mankind’s history. The best-known covenants were made with the physical nation of Israel. That covenant was re-established as the New Covenant with “better promises” and will be fully confirmed with spiritual Israel after the return of Jesus Christ.",
+      "verses": "Matthew 5:21-22; 2Timothy 3:15-16; Hebrews 8:6-13"
+    },
+    {
+      "title": "TEN COMMANDMENTS",
+      "body": "The Ten Commandments were revealed by God to Moses who then codified them. They were then ratified and magnified by Christ, as the perfect expression of God’s love. They are the foundation of all biblical teaching and much of man’s law. They show mankind how to express love toward God and his fellowman and are consequently the focal point of Christian life.\n\nExodus 20:1; Deuteronomy 5:1-33; Matthew 5:17-19; Romans 13:10; 1Corinthians 7:19; Revelation 12:17; 22:14",
+      "text": "The Ten Commandments were revealed by God to Moses who then codified them. They were then ratified and magnified by Christ, as the perfect expression of God’s love. They are the foundation of all biblical teaching and much of man’s law. They show mankind how to express love toward God and his fellowman and are consequently the focal point of Christian life.",
+      "verses": "Exodus 20:1; Deuteronomy 5:1-33; Matthew 5:17-19; Romans 13:10; 1Corinthians 7:19; Revelation 12:17; 22:14"
+    },
+    {
+      "title": "ANNUAL HOLY DAYS",
+      "body": "ANNUAL HOLY DAYS – The seven annual holy days or “appointed feasts” depict God’s plan of salvation for mankind. They are ordained by God and were kept by the ancient Israelites. Keeping the holy days have been continued by the early New Testament Christians and are still kept today by modern day Christians.\n\nLeviticus 23:1-44; Zechariah 14:16; John 7:8-10; Acts 2:1; 12:3; 20:6; 16:1-40; 27:9; 1Corinthians 5:8; 16.8",
+      "text": "ANNUAL HOLY DAYS – The seven annual holy days or “appointed feasts” depict God’s plan of salvation for mankind. They are ordained by God and were kept by the ancient Israelites. Keeping the holy days have been continued by the early New Testament Christians and are still kept today by modern day Christians.",
+      "verses": "Leviticus 23:1-44; Zechariah 14:16; John 7:8-10; Acts 2:1; 12:3; 20:6; 16:1-40; 27:9; 1Corinthians 5:8; 16.8"
+    },
+    {
+      "title": "TITHING",
+      "body": "Tithing is a private matter between the individual and God because it is an act of worship. It is not the job of the church to “enforce” or “police” tithing, but simply teaches the responsibility to tithe. Each individual has the responsibility to “honor the Lord with his substance and with the firstfruits of all his increase.” Tithing and free will offerings are the method by which the gospel is proclaimed to the world.\n\nMalachi 3:8-1O; Matthew 6:21; 23:23; 2Corinthians 9:7",
+      "text": "Tithing is a private matter between the individual and God because it is an act of worship. It is not the job of the church to “enforce” or “police” tithing, but simply teaches the responsibility to tithe. Each individual has the responsibility to “honor the Lord with his substance and with the firstfruits of all his increase.” Tithing and free will offerings are the method by which the gospel is proclaimed to the world.",
+      "verses": "Malachi 3:8-1O; Matthew 6:21; 23:23; 2Corinthians 9:7"
+    },
+    {
+      "title": "SIN",
+      "body": "Sin is the transgression of God’s law. It is failing to meet the standards set by the character of Jesus Christ. The penalty for sin is death, but all sin can be completely forgiven by God, who desires that all men be saved. God forgives sin upon the repentance of the sinner. God therefore accepts the shed blood and sacrifice of Jesus Christ as payment in full for the penalty of a person’s repented of sins.\n\nRomans 6:23; Ephesians 4:32; Colossians 1:14; 1John 3:4",
+      "text": "Sin is the transgression of God’s law. It is failing to meet the standards set by the character of Jesus Christ. The penalty for sin is death, but all sin can be completely forgiven by God, who desires that all men be saved. God forgives sin upon the repentance of the sinner. God therefore accepts the shed blood and sacrifice of Jesus Christ as payment in full for the penalty of a person’s repented of sins.",
+      "verses": "Romans 6:23; Ephesians 4:32; Colossians 1:14; 1John 3:4"
+    },
+    {
+      "title": "THE CHRISTIAN",
+      "body": "THE CHRISTIAN – A true Christian is one who has repented of past sins, was baptized and in whom the Holy Spirit now dwells.\n\n(Romans 8:9; 1Corinthians 12:13",
+      "text": "THE CHRISTIAN – A true Christian is one who has repented of past sins, was baptized and in whom the Holy Spirit now dwells.",
+      "verses": "(Romans 8:9; 1Corinthians 12:13"
+    },
+    {
+      "title": "THE CHRISTIAN FAMILY",
+      "body": "The core of a stable society is the family, and the marriage relationship is the basis of the family. Although men and women’s roles are clearly defined in the Bible, both have equal spiritual potential before God. The husband, wife and children form the family that is the primary physical analogy of God’s plan for mankind.\n\nExodus 20:12; Malachi 4:5-6; Ephesians 5:22-29; 6:1-3; 1Peter 3:7",
+      "text": "The core of a stable society is the family, and the marriage relationship is the basis of the family. Although men and women’s roles are clearly defined in the Bible, both have equal spiritual potential before God. The husband, wife and children form the family that is the primary physical analogy of God’s plan for mankind.",
+      "verses": "Exodus 20:12; Malachi 4:5-6; Ephesians 5:22-29; 6:1-3; 1Peter 3:7"
+    },
+    {
+      "title": "HEALING",
+      "body": "Divine healing is a miracle and gift of God. He may bestow it in His mercy and love upon those who call upon Him in time of need according to their faith. The healings of Jesus Christ described in the Bible depict and represent His power to express compassion, to forgive sin, and ultimately, to resurrect the dead and eventually to establish the Kingdom of God here on earth.\n\nMatthew 9:1-7; James 5:14-15",
+      "text": "Divine healing is a miracle and gift of God. He may bestow it in His mercy and love upon those who call upon Him in time of need according to their faith. The healings of Jesus Christ described in the Bible depict and represent His power to express compassion, to forgive sin, and ultimately, to resurrect the dead and eventually to establish the Kingdom of God here on earth.",
+      "verses": "Matthew 9:1-7; James 5:14-15"
+    },
+    {
+      "title": "THE CHURCH OF GOD",
+      "body": "The church is the spiritual body of Christ. Physically, it is a group of persons called out by God and impregnated with His Holy Spirit. As a spiritual body, the church is made up of baptized, Spirit-led people scattered all over the world.\n\n1 Corinthians 12:12-14, 27; Colossians 3:15",
+      "text": "The church is the spiritual body of Christ. Physically, it is a group of persons called out by God and impregnated with His Holy Spirit. As a spiritual body, the church is made up of baptized, Spirit-led people scattered all over the world.",
+      "verses": "1 Corinthians 12:12-14, 27; Colossians 3:15"
+    },
+    {
+      "title": "MAN’S SPIRITUAL RELATIONSHIP WITH GOD",
+      "body": "Man’s spiritual relationship with God begins with repentance and faith. When these criteria are met, God “begets” us with His Spirit; He becomes our Father and we become His children. A family relationship has begun. To maintain this family relationship, a bond is formed as we fellowship with each other, and with God the Father and Jesus Christ. Communication as we fellowship is the tool that builds this family relationship. The tool of communication with God is nourished through four basic components: prayer, Bible study, meditation, and fasting. As we use the tool of communication, a warm personal relationship is established that gives us peace of mind, spiritual confidence, and faith that comes from knowing the Designer, Sustainer, and Ruler of the entire universe.\n\nMatthew 6:5–13; Acts 2:38; Romans 8:15–16; 1 Timothy 2:15; 3:16; Hebrews 1:1–2; 2:10–18; 1 John 1:3; Daniel 6:10",
+      "text": "Man’s spiritual relationship with God begins with repentance and faith. When these criteria are met, God “begets” us with His Spirit; He becomes our Father and we become His children. A family relationship has begun. To maintain this family relationship, a bond is formed as we fellowship with each other, and with God the Father and Jesus Christ. Communication as we fellowship is the tool that builds this family relationship. The tool of communication with God is nourished through four basic components: prayer, Bible study, meditation, and fasting. As we use the tool of communication, a warm personal relationship is established that gives us peace of mind, spiritual confidence, and faith that comes from knowing the Designer, Sustainer, and Ruler of the entire universe.",
+      "verses": "Matthew 6:5–13; Acts 2:38; Romans 8:15–16; 1 Timothy 2:15; 3:16; Hebrews 1:1–2; 2:10–18; 1 John 1:3; Daniel 6:10"
+    },
+    {
+      "title": "MAN’S RELATIONSHIP WITH HIS FELLOW MAN",
+      "body": "First, we must realize that we are a family—we all have the same roots. As a family we need to live in peace with one another as much as is possible, as amplified in the last six of the Ten Commandments. Jesus Christ gave us the principal discipline that would make it possible to live in peace with our fellowman. He said to love our fellow man as ourselves and gave specific instructions for settling problems with our fellow man. Scripture urges us to consider the needs of others and offer help to those in need when possible.\n\nExodus 20:12–17; Deuteronomy 22:1–4; Matthew 18:15–17; 22:39; 25:34–40; Philippians 2:2–4; Luke 10:29– 37; Hebrews 12:14; James 2:8",
+      "text": "First, we must realize that we are a family—we all have the same roots. As a family we need to live in peace with one another as much as is possible, as amplified in the last six of the Ten Commandments. Jesus Christ gave us the principal discipline that would make it possible to live in peace with our fellowman. He said to love our fellow man as ourselves and gave specific instructions for settling problems with our fellow man. Scripture urges us to consider the needs of others and offer help to those in need when possible.",
+      "verses": "Exodus 20:12–17; Deuteronomy 22:1–4; Matthew 18:15–17; 22:39; 25:34–40; Philippians 2:2–4; Luke 10:29– 37; Hebrews 12:14; James 2:8"
+    },
+    {
+      "title": "THE CHRISTIAN FAMILY",
+      "body": "The marriage relationship is the basis of the family, which in turn is the core of a stable society. As the primary physical analogy of God’s plan for mankind, marriage, child rearing, and the family are given a preeminent place in the teachings of the Bible and the church. Although roles are defined, men and women have equal spiritual potential before God.\n\nExodus 20:12; Malachi 4:5–6; Ephesians 5:22–29; 6:1–3; 1 Peter 3:7",
+      "text": "The marriage relationship is the basis of the family, which in turn is the core of a stable society. As the primary physical analogy of God’s plan for mankind, marriage, child rearing, and the family are given a preeminent place in the teachings of the Bible and the church. Although roles are defined, men and women have equal spiritual potential before God.",
+      "verses": "Exodus 20:12; Malachi 4:5–6; Ephesians 5:22–29; 6:1–3; 1 Peter 3:7"
+    },
+    {
+      "title": "THE CHURCH OF GOD",
+      "body": "The church is the spiritual body of Christ, a group of persons called out by God and impregnated with His Holy Spirit. As a spiritual body, the church is made up of baptized, Spirit-led individuals who are scattered around the world.\n\n1 Corinthians 12:12–14, 27; Colossians 3:15",
+      "text": "The church is the spiritual body of Christ, a group of persons called out by God and impregnated with His Holy Spirit. As a spiritual body, the church is made up of baptized, Spirit-led individuals who are scattered around the world.",
+      "verses": "1 Corinthians 12:12–14, 27; Colossians 3:15"
+    },
+    {
+      "title": "THE MISSION OF THE CHURCH",
+      "body": "The Church has a mandate to continue with the witness and message of Jesus Christ initiated through His life, teachings, and sacrifice for every person and all nations. This will be accomplished by the resources available to the “body of Christ” and furthered through the spiritual gifts bestowed by our Heavenly Father. As the “body” consists of individual members, it is each person’s privilege to follow the Savior and “repent…and believe the good news.” Living as new creatures in Christ, it then becomes evident that a devoted membership will carry on the work begun by Jesus to announce, “in all the world” that the “Kingdom of God is at hand.” Furthermore, Christ’s promise of vitality to His Church for all ages will be evident in the love of each member for their “brothers and sisters in the faith,” and their fellow man, regardless of gender, race, or social status. Through spiritual design, the body of Christ will extend beyond a local community as members support one another, taking care of their “own,” visiting the fatherless and widows in their affliction, and keeping themselves unspotted from the world.\n\nMatthew 28:19–20; Mark 1:15; 16:15–16; Acts 1:7–8; Matthew 16:18–19; Luke 24:44–47; Luke 4:18–19",
+      "text": "The Church has a mandate to continue with the witness and message of Jesus Christ initiated through His life, teachings, and sacrifice for every person and all nations. This will be accomplished by the resources available to the “body of Christ” and furthered through the spiritual gifts bestowed by our Heavenly Father. As the “body” consists of individual members, it is each person’s privilege to follow the Savior and “repent…and believe the good news.” Living as new creatures in Christ, it then becomes evident that a devoted membership will carry on the work begun by Jesus to announce, “in all the world” that the “Kingdom of God is at hand.” Furthermore, Christ’s promise of vitality to His Church for all ages will be evident in the love of each member for their “brothers and sisters in the faith,” and their fellow man, regardless of gender, race, or social status. Through spiritual design, the body of Christ will extend beyond a local community as members support one another, taking care of their “own,” visiting the fatherless and widows in their affliction, and keeping themselves unspotted from the world.",
+      "verses": "Matthew 28:19–20; Mark 1:15; 16:15–16; Acts 1:7–8; Matthew 16:18–19; Luke 24:44–47; Luke 4:18–19"
+    },
+    {
+      "title": "THE MINISTRY",
+      "body": "The ministry of Jesus Christ and the New Testament church is a ministry of service to God and His people, and a continuation of the earthly ministry of Jesus Christ. The ministry has the responsibility of teaching, edifying, and overseeing the Church of God. The ministry of Jesus Christ is a team effort and not subject to one-man rule. The Bible outlines the offices and job functions for the ministry of the Church of God and dictates high moral and ethical conduct for all members of the ministry.\n\n:17–21; 2 Timothy 2:24–26; 1 Peter 5",
+      "text": "The ministry of Jesus Christ and the New Testament church is a ministry of service to God and His people, and a continuation of the earthly ministry of Jesus Christ. The ministry has the responsibility of teaching, edifying, and overseeing the Church of God. The ministry of Jesus Christ is a team effort and not subject to one-man rule. The Bible outlines the offices and job functions for the ministry of the Church of God and dictates high moral and ethical conduct for all members of the ministry.",
+      "verses": ":17–21; 2 Timothy 2:24–26; 1 Peter 5"
+    },
+    {
+      "title": "FELLOWSHIP",
+      "body": "Prevalent use of the term “fellowship” appears throughout the New Testament. It is a necessity and requirement of the believer. Fellowship connotes the following concepts: communion, sharing, communication, partaker, partnership, and contribution. The Spirit of God facilitates all of these as they are expressed in the body of Christ. The apostle John tells us that fellowship with the Father and the Son produces the ability to fellowship with members of Christ’s church, even across regional and national boundaries, and across organizational lines also.\n\nCorinthians 1:9; 10:20; 2 Corinthians 6:14; Ephesians 4:1–6; Philippians 2:1; Hebrews 10:24–25; 1 John 1:3, 6– 7",
+      "text": "Prevalent use of the term “fellowship” appears throughout the New Testament. It is a necessity and requirement of the believer. Fellowship connotes the following concepts: communion, sharing, communication, partaker, partnership, and contribution. The Spirit of God facilitates all of these as they are expressed in the body of Christ. The apostle John tells us that fellowship with the Father and the Son produces the ability to fellowship with members of Christ’s church, even across regional and national boundaries, and across organizational lines also.",
+      "verses": "Corinthians 1:9; 10:20; 2 Corinthians 6:14; Ephesians 4:1–6; Philippians 2:1; Hebrews 10:24–25; 1 John 1:3, 6– 7"
+    }
+  ],
+  "ministry": [
+    {
+      "title": "Who We Are",
+      "body": "The Church of God, Gaithersburg Maryland, believes the Bible to be the inspired and infallible holy written word of God. We are a Sabbath Keeping church, denominationally, teaching the relevance of both the Old and New Testament principles pertaining to doctrinal practices and current day worship. The seventh-day Sabbath and God’s Holy Feast Days are taught and kept holy in accordance with biblical instruction. Instituted at Creation, reaffirmed to Israel as part of the covenant at Sinai and taught by Jesus Christ who is the Messenger of the New Covenant. The observance of the Sabbath is considered basic to a Christian’s relationship with God.\n\n“I am the Lord your God; walk in my statutes, and keep my judgments, and do them; And hallow my sabbaths; and they shall be a sign between me and you, that ye may know that I am the Lord your God” (Ezekiel 20: 19-20)\n\nWe believe that Jesus Christ died for our sins and after three nights and three days, rose from the dead. Jesus Christ is our Lord, Savior and our High Priest. We believe in the hope of Jesus Christ and his return as prophesied in God’s Word. We believe in the keeping of the Ten Commandments and God’s Holy Feast Days as described in the book of Leviticus 23. We believe we should live a Holy and separated life in this present World. We believe in the oneness of the creator. We believe in the Repentance of our sin. We believe in Baptism by submergence in water through Jesus Christ for the Remission of sins. We believe in the indwelling of God’s Holy Spirit, as received (Acts 2), and it spiritually strengthens Christians, converting their minds to be like Christ in obedience to His Word."
+    },
+    {
+      "title": "Doctrinal Statement",
+      "body": "The law of God as revealed in the Bible is a good, right and perfect system of eternal directives and principles which reflects God’s character and serves as a means of expressing His love toward man. God’s law teaches man how to properly worship God, how to love his fellow man, how to live life abundantly, and, at the same time, how to prepare for an eternal spiritual life in the family of God. The law of God is represented in both the Old and New Testaments and is expressed by both physical actions and spiritual motivations."
+    },
+    {
+      "title": "Church Philosophy",
+      "body": "The Church of God International looks to the whole Bible, both Old and New Testaments, as its fundamental source of doctrine and teachings. We accept Christ’s statement that “Man shall not live by bread alone, but by every word that proceedeth out of the mouth of God” (Matthew 4:4). We are the descendants of God through the covenant He made with Abraham who was a Hebrew. This covenant include the promises of both natural and spiritual blessings. By believing God, Abraham became the father of faith. Jesus is the promise seed of Abraham. Our faith in Jesus Christ brings us into harmony with the promises of the covenant (Galatians 3:25-29). The foundation of our doctrine spans the scope of both the old and new covenants. The commandments, statues and judgments of God, which were the foundation of the first covenant, have been removed from the stones, and through God’s Holy Spirit, they are now written in our hearts. The promise of the Holy Spirit was fulfilled on the Day of Pentecost."
+    },
+    {
+      "title": "Statement of beliefs",
+      "body": "Click here for information about our beliefs on God, Jesus Christ, the Bible and more."
+    }
+  ],
+  "holyIntro": [
+    "Holy days are observed beginning sundown the previous evening and end at sundown on the days listed. Passover is observed at sundown on the day listed.",
+    "Just as it keeps the weekly Sabbath, the Church of God also observes the annual holy days that were ordained by God, kept by the ancient Israelites and continued by the early New Testament Christians. The seven annual “appointed feasts” pictures God’s plan of salvation for man. God has established annual Sabbaths which are to be observed by his people. Each annual Holy Day is a memorial to some great act or deed of God. He uses these memorials to keep alive the memory of his deeds. In observance of these annual Sabbaths, we magnify the LORD’S word in remembrance of his past, present and future works. The power of salvation is found in obedience to God’s word. For it is better to obey than sacrifice.",
+    "The annual Sabbaths can be best understood by us if we bear in mind the preeminence of God over man. The things which God does, has no equal. His ways are above our ways, his thoughts are above our thoughts (Isaiah 55:8-9). The things which are impossible with man are possible with God. There is simply nothing available for us to measure God by. Therefore, we must measure him by himself (Isaiah 40:18-31; Hebrews 6: 13-14). “He sitteth upon the circle of the earth and he has no equal.” Again, we must take heed to the things which God does and speak. These two statements are foremost in understanding the annual Sabbaths. What God does is forever; what He says man must live by (Psalms 19:9; Ecclesiastes 3:14; Deuteronomy 8:1-3).",
+    "NEW TESTAMENT PASSOVER\nMarch 31 (Observed at Sundown)",
+    "FEAST OF UNLEAVENED BREAD\nApril 2 – 8",
+    "FEAST OF TRUMPETS\nSeptember 12"
+  ],
+  "holyDays": [
+    {
+      "name": "Passover",
+      "summary": "When Yahweh, paid the price for the redemption of mankind by sacrificing His Son Yeshua, the Passover Lamb for the sins of the world.",
+      "body": "The Passover Service introduces us to the first of the annual memorials in the sacred calendar. God began the annual Sabbaths with the birth of His nation Israel. He decided that Abib was the beginning of months (Exodus 12:1-2). One of the most dramatic incidents in the history of mankind began, with an announcement to the whole earth, that the true God of all creation had chosen a nation unto himself (Exodus 5:1-3; 6:1 -8). In the process of delivering his nation, God brought the nation of Egypt to its knees. And in doing so, he placed fear in the hearts of all nations. In that well known episode of Scripture, Yahweh “passed over” the houses of the believers who had obeyed His command to apply the blood of a literal lamb to the lintel and doorposts of their dwellings. The Almighty spared the lives of the Israelites but allowed the destroyer to kill the firstborn of the Egyptians who refused to obey. This mighty work of deliverance is memorialized and perpetrated in the observance of Passover and the Feast of Unleavened Bread. The Almighty institutionalized and proclaimed Abib 14 as the memorial feast of Passover."
+    },
+    {
+      "name": "Feast of Unleavened Bread",
+      "summary": "When Yahweh, put sin, hypocrisy, and false doctrine out of His church, His house, His Temple – for all time.",
+      "body": "The week of unleavened bread is often referred to as the Passover Week. The first and last days of this week (Abib 15th through Abib 21st) are Sabbath days, and believers are commanded to assemble to worship the Almighty God (Leviticus 23: 5-8). God established a seven (7) day period, proclaiming that unleavened bread must be eaten seven days (Exodus 12:15). Included, within these seven days, are both Passover (Abib 14) and the Feast of Unleavened Bread (Abib 15). These facts are evident in the Scriptures and were observed in like manner by Jesus and his disciples (Matthew 26:17; Mark 14:12; Luke 22:7- 8). Leviticus 23:4-8, recaps the seven (7) days of unleavened bread known as (Leviticus 23:6), the feast of unleavened bread. The origin and law of observance, which establishes the seven-day period is found in Exodus, chapter 12. The same period of seven days appear in Numbers 28:21-25, and again in Ezekiel 45:21-25. In the New Testament, Jesus and his disciples, were not confused about the period, according to Luke 22:7-8, they knew that the Passover Lamb must be killed on the day of unleavened bread which is the first day of the seven-day period. Leaven is a symbol of sin, hypocrisy, and false doctrine. The week of unleavened bread symbolizes the church, which will be purged by God of every trace of sin."
+    },
+    {
+      "name": "Pentecost (Feast of Weeks)",
+      "summary": "When Yahweh begins to produce spiritual fruit, the fruit of the Holy Spirit in the lives of His true believers.",
+      "body": "The next annual Sabbath occurs during the 3rd month of the Hebrew Calendar, which is Sivan. The Feast of Pentecost, also called the Feast of First Fruits. This feast falls on the 50th day after the Passover Sabbath. This feast is a reminder, a guarantee of Yahweh’s power to produce spiritual fruit in the field of human salvation. The first fruit of the Holy Spirit are the true believers won to God by His Son the firstborn (Corinthians 15: 20, 23; James 1:18; Revelation 14:4). Pentecost is also the anniversary of the founding of the New Testament Church. It initiates God’s plan of salvation for the world. Just as Pentecost marked the spring of first harvest, Pentecost also symbolizes the first small harvest of individuals through God’s Church. In the salvation of the individual, Pentecost represents the receiving of the Holy Spirit. This Holy Spirit enables the convert to go forward in spreading the gospel just as the disciples did, like never before, after they received the Holy Spirit. The pouring out of the Holy Spirit as recorded in Act 2, was the early harvest a kind of” firstfruits” of an even greater out-pouring of divine power to fall upon the church in the future when the main harvest of believers will be gathered. The feast of Pentecost prefigures and commemorates the early harvest, the first fruit of human souls: and those who celebrate it declares their willingness to be part of the spiritual multitude gathered and presented to the Almighty by His Son – the firstborn!"
+    },
+    {
+      "name": "Feast of Trumpets",
+      "summary": "When Yahweh calls, gathers, protects, and defends His true followers.",
+      "body": "The Feast of Trumpets is celebrated on the first day of Ethanim (Tishri), the seventh month in the sacred calendar (Leviticus 23:24). The Feast of Trumpets is a memorial Sabbath, a day of special significance designed to bring believers into remembrance before the Almighty. This memorial of trumpets is a continual reminder to us to watch for the second coming of our Lord. The sounding of the Shofar, lifts the hearts of God’s people together in singing and praising Him. Trumpets marks the new moon of the seventh month, during which month, our hearts are to be both humbled and made glad. This Feast of Trumpets also symbolizes the resurrection of all who died in Christ and the change of all who will be living in Christ. The stunning event – the achievement of eternal life for millions through birth into the Family of Yahweh, will occur simultaneously with the return of Jesus Christ at the last trump. “In a moment, in the twinkling of an eye, at the last trump: for the trumpet will sound, and the dead shall be raised incorruptible, and we shall be changed “ (I Corinthians 15:52). Only when that even happens can we justifiable say the Feast of Trumpets has found fulfillment."
+    },
+    {
+      "name": "Day of Atonement",
+      "summary": "When the ransom church is brought by the Almighty’s Son into the very presence of His Father to be ‘at-one’ with Him.",
+      "body": "The day of Atonement is observed on the 10th day of the seventh month (Tishri) by abstinence from daily labor, by a holy convocation, and by fasting. It is the only commanded fast in the year and is the most solemn day in Yahweh’s sacred calendar (Leviticus 23: 27-32). The word “atonement” means to make amends for, to reconcile, to restore, to repair, to make at-one again. This is exactly what the Day of Atonement prefigures. It points to a specific time in the future when the great High Priest of the Melchizedek Order (The Messiah) will literally bring the redeemed host of mankind right into the very presence of His Father, to be at-one with Him. This solemn day symbolizes the reunion of God and man after Christ returns to earth. At this time Satan shall be bound and no longer allowed to deceive the world (Revelation 20:1-3)."
+    },
+    {
+      "name": "Feast of Tabernacles",
+      "summary": "When Yahweh takes up His eternal abode and tabernacles with His people in the person of His Son.",
+      "body": "The Feast of Tabernacles (Booth or Shelters) is celebrated on the 15th day of Tishri, the seventh month in Yahweh’s sacred calendar. It is a memorial of the time when Yahweh made His people live in tents and temporary shelters in the wilderness when He brought them out bondage from Egypt. This festival analogously acts out the Millennium – the 1000 years of Christ’s reign on earth. The true harvest of mankind can now take place when all nations can be brought to God. The Feast of Tabernacles is a time of great joy (Deuteronomy 16:13-15). We can rejoice and share with others the bounty God has provided us (Nehemiah 8:9-18). The Golden Age shall reign, happiness and peace shall be reality and worldwide salvation shall be possible. At a higher level, it is also a reminder or memorial of the fact that the Almighty’s astonishing act of love to come down to earth to tabernacle or pitch His tent with humanity in the person of His Son. For Jesus Christ is Immanuel, GOD WITH US incarnate taking up His abode in the tabernacle amidst His people (Exodus 3:7-11) in order to redeem us."
+    },
+    {
+      "name": "Last Great Day",
+      "summary": "Through the power of the Holy Spirit, Yahweh’s church will become a blessing to the entire universe – for the great day which we call Eternity!",
+      "body": "The Feats known as the Last Great Day, occurs just after the week of Tabernacles (Leviticus 23:36). The Last Great Day prefigures the endless cycle of eternity when the life-giving power of the Almighty God will flow to His people on the earth made new. It must be remembered that millions have lived and died without ever having the knowledge to understand salvation. The Last Great Day represents the time when they shall be restored and given that chance – not a second chance, but a first chance, a chance they will not have had before. Only then shall Yahweh’s initial plan for mankind be at an end. Thus, this last great holy day of Yahweh pictures the greatest period of salvation for mankind – the Great White Throne Judgement (Revelation 20: 11-15)."
+    }
+  ],
+  "calendar2026": [
+    {
+      "name": "New Testament Passover",
+      "date": "March 31 (Observed at Sundown)"
+    },
+    {
+      "name": "Feast of Unleavened Bread",
+      "date": "April 2 – 8"
+    },
+    {
+      "name": "Pentecost",
+      "date": "May 24"
+    },
+    {
+      "name": "Feast of Trumpets",
+      "date": "September 12"
+    },
+    {
+      "name": "Day of Atonement",
+      "date": "September 21"
+    },
+    {
+      "name": "Feast of Tabernacles",
+      "date": "September 26 – October 2"
+    },
+    {
+      "name": "Last Great Day",
+      "date": "October 3"
+    }
+  ],
+  "calendarDownload": "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2025/12/16214030/Holy-Day-Calendar-2030.png",
+  "events": [
+    {
+      "name": "Friday Night Prayer Service",
+      "description": "You can join the prayer service from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and be ready when […]\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/friday-night-prayer-service-07-24-26/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-07-24T19:15:00-04:00",
+      "end": "2026-07-24T20:15:00-04:00"
+    },
+    {
+      "name": "Online Bible Study",
+      "description": "Speaker: TBD Topic: TBD You can join the meeting from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and […]\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/online-bible-study-06-27-26-copy/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-07-25T13:45:00+00:00",
+      "end": "2026-07-25T16:00:00+00:00"
+    },
+    {
+      "name": "Friday Night Prayer Service",
+      "description": "You can join the prayer service from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and be ready when […]\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/friday-night-prayer-service-07-31-26/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-07-31T19:15:00-04:00",
+      "end": "2026-07-31T20:15:00-04:00"
+    },
+    {
+      "name": "Weekly Sabbath Service",
+      "description": "Speaker: TBD Topic: TBD You can join the meeting from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and be ready when the meeting starts: https://meet.goto.com/install 810 S. Frederick Ave, 2nd Floor: Aspen RoomGaithersburg, Maryland 20877United States+ Google Map\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/weekly-sabbath-service-08-01-26/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-08-01T13:45:00+00:00",
+      "end": "2026-08-01T16:00:00+00:00"
+    },
+    {
+      "name": "Friday Night Prayer Service",
+      "description": "You can join the prayer service from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and be ready when the meeting starts: https://meet.goto.com/install\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/friday-night-prayer-service-08-07-26/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-08-07T19:15:00-04:00",
+      "end": "2026-08-07T20:15:00-04:00"
+    },
+    {
+      "name": "Weekly Sabbath Service",
+      "description": "Speaker: TBD Topic: TBD You can join the meeting from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and be ready when the meeting starts: https://meet.goto.com/install 810 S. Frederick Ave, 2nd Floor: Aspen RoomGaithersburg, Maryland 20877United States+ Google Map\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/weekly-sabbath-service-08-08-26/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-08-08T13:45:00+00:00",
+      "end": "2026-08-08T16:00:00+00:00"
+    },
+    {
+      "name": "Friday Night Prayer Service",
+      "description": "You can join the prayer service from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and be ready when the meeting starts: https://meet.goto.com/install\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/friday-night-prayer-service-08-14-26/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-08-14T19:15:00-04:00",
+      "end": "2026-08-14T20:15:00-04:00"
+    },
+    {
+      "name": "Weekly Sabbath Service",
+      "description": "Speaker: TBD Topic: TBD You can join the meeting from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and be ready when the meeting starts: https://meet.goto.com/install 810 S. Frederick Ave, 2nd Floor: Aspen RoomGaithersburg, Maryland 20877United States+ Google Map\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/weekly-sabbath-service-08-15-26/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-08-15T13:45:00+00:00",
+      "end": "2026-08-15T16:00:00+00:00"
+    },
+    {
+      "name": "Friday Night Prayer Service",
+      "description": "You can join the prayer service from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and be ready when the meeting starts: https://meet.goto.com/install\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/friday-night-prayer-service-08-21-26/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-08-21T19:15:00-04:00",
+      "end": "2026-08-21T20:15:00-04:00"
+    },
+    {
+      "name": "Weekly Sabbath Service",
+      "description": "Speaker: TBD Topic: TBD You can join the meeting from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and be ready when the meeting starts: https://meet.goto.com/install 810 S. Frederick Ave, 2nd Floor: Aspen RoomGaithersburg, Maryland 20877United States+ Google Map\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/weekly-sabbath-service-08-22-26/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-08-22T13:45:00+00:00",
+      "end": "2026-08-22T16:00:00+00:00"
+    },
+    {
+      "name": "Friday Night Prayer Service",
+      "description": "You can join the prayer service from your computer, tablet, or smartphone. https://meet.goto.com/cgimaryland/sabbath_service_new You can also dial in using your phone. United States: +1 (872) 240-3412 Access Code: 300-519-741 Get the app now and be ready when the meeting starts: https://meet.goto.com/install\n\n\\\\n",
+      "url": "https://cgimaryland.org/event/friday-night-prayer-service-08-28-26/\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"eventStatus\":\"https://schema.org/EventScheduled",
+      "start": "2026-08-28T19:15:00-04:00",
+      "end": "2026-08-28T20:15:00-04:00"
+    }
+  ],
+  "donate": {
+    "paragraphs": [
+      "To donate by check or money order, make it payable to “CGI Gaithersburg,” and please send the donation to:",
+      "CGI Gaithersburg MD\n2 Village Green CT\nGermantown, MD 20876",
+      "To donate online, please click the “Donate Here” button or capture the QR code below.(Note: When prompted for your address during the donation process, please use your billing address.)"
+    ],
+    "images": [
+      "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2022/03/06155456/donate-banner.jpg",
+      "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2026/03/21004809/CGIlogo_2026-150x150.png",
+      "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2026/03/21004809/CGIlogo_2026-300x300.png",
+      "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2026/03/21040411/CGIlogo_2026_HEADER_XL.png",
+      "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2026/03/21040411/CGIlogo_2026_HEADER_XL.png 1851w, https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2026/03/21040411/CGIlogo_2026_HEADER_XL-300x78.png 300w, https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2026/03/21040411/CGIlogo_2026_HEADER_XL-1024x266.png 1024w, https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2026/03/21040411/CGIlogo_2026_HEADER_XL-768x199.png 768w, https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2026/03/21040411/CGIlogo_2026_HEADER_XL-1536x398.png",
+      "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2022/03/06155456/donate-banner.jpg 2000w, https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2022/03/06155456/donate-banner-300x105.jpg 300w, https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2022/03/06155456/donate-banner-1024x358.jpg 1024w, https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2022/03/06155456/donate-banner-768x269.jpg 768w, https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2022/03/06155456/donate-banner-1536x538.jpg",
+      "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2025/07/19231845/checkout-qr-1mpb0am5ts5n0sjm2cck1m6mrr0s39.png",
+      "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2026/03/21040645/CGIlogo_2026_Footer_SM.png"
+    ],
+    "qr": [
+      "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2025/07/19231845/checkout-qr-1mpb0am5ts5n0sjm2cck1m6mrr0s39.png"
+    ],
+    "checkoutKey": "checkout_public_eYdyF9nq9mq8WgCXHm2Qtf2vPkG5Tc6V",
+    "mailTo": {
+      "payable": "CGI Gaithersburg",
+      "name": "CGI Gaithersburg MD",
+      "address": "2 Village Green CT",
+      "city": "Germantown, MD 20876"
+    }
+  },
+  "contact": {
+    "people": [
+      {
+        "role": "Elder",
+        "name": "Michael Reis",
+        "phone": "240-780-6910",
+        "email": "elder@cgimaryland.org"
+      },
+      {
+        "role": "Treasurer",
+        "name": "Tom Bettinger",
+        "phone": "301-518-8034",
+        "email": "treasurer@cgimaryland.org"
+      },
+      {
+        "role": "Website Manager",
+        "name": "Herb Hanson",
+        "phone": "240-780-6910",
+        "email": "webmaster@cgimaryland.org"
+      }
+    ]
+  },
+  "privacy": [
+    "This privacy statement applies to Church of God International, Gaithersburg, Maryland (CGIMD). CGIMD respects and values the privacy of our visitors.",
+    "We will not sell, share or trade our donors’ names or personal information with any other entity, nor send mailings to our donors on behalf of other organizations.",
+    "This policy applies to all information received by CGIMD, both online and offline, on any Platform (“Platform,” includes the CGIMD website as well as any electronic, written, or oral communications.)",
+    "To the extent any donations are processed through a third-party service provider, our donors’ information will only be used for purposes necessary to process the donation.",
+    "Although CGIMD employ industry standard practices to protect your privacy, the technological limitations of Internet data transmission make it impossible to guarantee that personal data will never be disclosed in ways not described in this Privacy Statement.",
+    "Like most websites, our server software gathers in log files general demographic information from all users of the website. This includes browser types, IP addresses and referring domains. We also use small bits of data called “cookies” stored on users’ computers to simulate a continuous connection. We use this information to help us understand our visitors’ needs and to improve our website. You can see and control cookies through settings in your browser. However, refusing to accept cookies may limit your ability to access certain portions of the website.",
+    "CGIMD may store and disclose personal information as allowed or required by applicable law, including making disclosures that are necessary or advisable to: (a) protect the rights, safety or property of users of our website, the public, CGIMD, or our website suppliers; and (b) conform to legal or regulatory requirements.",
+    "If the CGIMD website changes its privacy practices, those changes will be posted on this page so that you are kept informed of what information we collect, how we use it, and under what circumstances we disclose it. Please check this page for changes from time to time to make sure you are aware of our latest privacy practices.",
+    "By using our website, you consent to the collection and use of the information by CGIMD as stated above. If you do not consent, please do not use this site. Your continued use of the CGIMD website following the posting of changes to this privacy statement constitutes your acceptance of those changes.",
+    "For those of you viewing this site from outside the United States of America, please note that the information you enter may be transferred outside of your country. By using the website and providing us with your personal data, you consent to this transfer of your personal data and to the information usage described above. If you choose to access the website from outside the United States of America, you take responsibility for compliance with applicable privacy laws of your country."
+  ]
+}
