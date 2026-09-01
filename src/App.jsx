@@ -84,6 +84,18 @@ function Paras({ text }) {
 
 const latestSermons = sermonArchive.slice(0, 3)
 
+function BrandLogo({ light = false }) {
+  return (
+    <Link to="/" className={`brand${light ? ' brand-light' : ''}`} aria-label="Church of God International — Gaithersburg, Maryland home">
+      <img src="/cgi-logo.png" alt="" className="brand-logo" width="60" height="60" />
+      <span className="brand-copy">
+        <strong>Church of God International</strong>
+        <small>Gaithersburg, Maryland</small>
+      </span>
+    </Link>
+  )
+}
+
 function usePath() {
   const [path, setPath] = useState(window.location.pathname.replace(/\/+$/, '') || '/')
   useEffect(() => {
@@ -150,13 +162,7 @@ function Header() {
     </div>
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="container nav-wrap">
-        <Link to="/" className="brand" aria-label="CGI Maryland home">
-          <span className="brand-mark"><span>CGI</span></span>
-          <span className="brand-copy">
-            <strong>Church of God International</strong>
-            <small>Gaithersburg, Maryland</small>
-          </span>
-        </Link>
+        <BrandLogo />
         <div className="nav-actions">
           <Link to="/donate" className="button button-small header-donate-mobile">Donate</Link>
           <button className={`menu-button ${open ? 'is-active' : ''}`} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} onClick={() => setOpen(!open)}>
@@ -270,10 +276,7 @@ function Footer() {
 
     <div className="container footer-main">
       <div className="footer-intro">
-        <div className="brand brand-light">
-          <span className="brand-mark"><span>CGI</span></span>
-          <span className="brand-copy"><strong>Church of God International</strong><small>Gaithersburg, Maryland</small></span>
-        </div>
+        <BrandLogo light />
         <p>A Sabbath-keeping congregation serving Maryland, Virginia, Washington, DC, and worshipers joining online.</p>
         <blockquote>“Call the sabbath a delight, the holy of the LORD, honourable.”<cite>Isaiah 58:13</cite></blockquote>
       </div>
