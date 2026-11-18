@@ -1,16 +1,36 @@
 import { useEffect, useMemo, useState } from 'react'
-import sermonArchive from './data/sermons.json'
-import siteContent from './data/site-content.json'
 import { bibleBooks, oldTestamentCount } from './data/bibleBooks.js'
+import { useCMS } from './cms/ContentContext'
+import AdminApp from './admin/AdminApp'
 
-const SITE = {
-  address: `${siteContent.worship.address}, ${siteContent.worship.city}`,
-  phone: siteContent.worship.phone,
-  email: siteContent.worship.email,
-  directions: siteContent.worship.directions,
-  place: siteContent.worship.place,
-  serviceTime: siteContent.worship.time,
-  virtual: siteContent.worship.virtual,
+function useSiteData() {
+  const { site, sermons, heroSlides, ticker } = useCMS()
+  const worship = site.worship || {}
+  return {
+    site,
+    SITE: {
+      address: `${worship.address || ''}, ${worship.city || ''}`,
+      phone: worship.phone || '',
+      email: worship.email || '',
+      directions: worship.directions || '#',
+      place: worship.place || '',
+      serviceTime: worship.time || '',
+      virtual: worship.virtual || '',
+    },
+    beliefItems: site.beliefs || [],
+    holyDayCalendar: site.calendar2026 || [],
+    holyDayDetails: site.holyDays || [],
+    ministrySections: site.ministry || [],
+    siteEvents: site.events || [],
+    donateInfo: site.donate || {},
+    privacyParas: site.privacy || [],
+    contactPeople: site.contact?.people || [],
+    scriptureFull: site.scripture || '',
+    holyIntro: site.holyIntro || [],
+    sermonArchive: sermons || [],
+    heroSlides: heroSlides || [],
+    ticker: ticker || [],
+  }
 }
 
 const icons = {
@@ -49,17 +69,6 @@ function Link({ to, children, className = '', onClick, ...props }) {
   return <a href={to} className={className} onClick={handleClick} {...props}>{children}</a>
 }
 
-const beliefItems = siteContent.beliefs
-const holyDayCalendar = siteContent.calendar2026
-const holyDayDetails = siteContent.holyDays
-const ministrySections = siteContent.ministry
-const siteEvents = siteContent.events
-const donateInfo = siteContent.donate
-const privacyParas = siteContent.privacy
-const contactPeople = siteContent.contact.people
-const scriptureFull = siteContent.scripture
-const holyIntro = siteContent.holyIntro || []
-
 const decodeHtml = (value = '') => value
   .replace(/&#8217;/g, "'")
   .replace(/&#8216;/g, "'")
@@ -81,8 +90,6 @@ function formatEventParts(iso) {
 function Paras({ text }) {
   return String(text || '').split(/\n\n+/).filter(Boolean).map((para, i) => <p key={i}>{para}</p>)
 }
-
-const latestSermons = sermonArchive.slice(0, 3)
 
 function BrandLogo({ light = false }) {
   return (
@@ -109,9 +116,11 @@ function usePath() {
 
 function Header() {
   const path = usePath()
+  const { SITE, ticker } = useSiteData()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [openMenu, setOpenMenu] = useState(null)
+  const tickerItems = ticker.length ? [...ticker, ...ticker] : []
 
   useEffect(() => {
     const close = () => { setOpen(false); setOpenMenu(null) }
@@ -145,12 +154,7 @@ function Header() {
         <div className="topbar-ticker" aria-live="polite">
           <span className="topbar-ticker-label">This week</span>
           <span className="topbar-ticker-track">
-            <span>Friday Night Prayer · Jul 24, 7:15 PM</span>
-            <span>Online Bible Study · Jul 25, 1:45 PM</span>
-            <span>Weekly Sabbath Service · Sat 1:45 PM</span>
-            <span>Friday Night Prayer · Jul 24, 7:15 PM</span>
-            <span>Online Bible Study · Jul 25, 1:45 PM</span>
-            <span>Weekly Sabbath Service · Sat 1:45 PM</span>
+            {tickerItems.map((item, index) => <span key={`${item}-${index}`}>{item}</span>)}
           </span>
         </div>
         <div className="topbar-right">
@@ -242,6 +246,7 @@ function Header() {
 }
 
 function Footer() {
+  const { SITE } = useSiteData()
   return <footer className="site-footer">
     <div className="footer-glow" aria-hidden="true" />
     <div className="container footer-invitation">
@@ -315,82 +320,60 @@ function PageHero({ eyebrow, title, text, image }) {
   return <section className="page-hero" style={{ '--page-image': `url("${image}")` }}><div className="page-hero-shade" /><div className="container page-hero-content"><span className="eyebrow light">{eyebrow}</span><h1>{title}</h1>{text && <p>{text}</p>}</div></section>
 }
 
-const heroSlides = [
-  {
-    eyebrow: 'Faith · Fellowship · Truth',
-    title: <>A place to belong.<br />A faith to live.</>,
-    text: 'Join a welcoming community seeking to follow Jesus Christ, honor God’s Word, and grow together in faith.',
-    primary: ['Plan Your Visit', '/events'],
-    secondary: ['Watch a Sermon', '/sermons'],
-    image: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=2000&q=88',
-    position: 'center 42%',
-  },
-  {
-    eyebrow: 'Worship with us each Sabbath',
-    title: <>Gather in worship.<br />Grow in the Word.</>,
-    text: 'Join us Saturdays at 1:45 PM for biblical teaching, prayer, fellowship, and encouragement.',
-    primary: ['Service Details', '/events'],
-    secondary: ['Get Directions', SITE.directions],
-    image: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=2000&q=88',
-    position: 'center 52%',
-  },
-  {
-    eyebrow: 'God’s appointed times',
-    title: <>Remember His works.<br />Rejoice in His plan.</>,
-    text: 'Explore the annual holy days and the story of salvation they reveal throughout Scripture.',
-    primary: ['Explore Holy Days', '/annual-holy-days'],
-    secondary: ['Our Beliefs', '/beliefs'],
-    image: 'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=2000&q=88',
-    position: 'center 48%',
-  },
-]
-
 function HeroSlider() {
+  const { SITE, heroSlides } = useSiteData()
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
+  const slides = heroSlides.length ? heroSlides : []
 
   useEffect(() => {
-    if (paused) return undefined
-    const timer = window.setInterval(() => setActive(current => (current + 1) % heroSlides.length), 6500)
+    if (paused || !slides.length) return undefined
+    const timer = window.setInterval(() => setActive(current => (current + 1) % slides.length), 6500)
     return () => window.clearInterval(timer)
-  }, [paused])
+  }, [paused, slides.length])
 
-  const changeSlide = direction => setActive(current => (current + direction + heroSlides.length) % heroSlides.length)
-  const slide = heroSlides[active]
-  const secondaryExternal = slide.secondary[1].startsWith('http')
+  if (!slides.length) return null
+
+  const changeSlide = direction => setActive(current => (current + direction + slides.length) % slides.length)
+  const slide = slides[active] || slides[0]
+  const secondaryHref = slide.secondaryHref || slide.secondaryTo || '/contact-us'
+  const secondaryExternal = String(secondaryHref).startsWith('http')
+  const primaryTo = slide.primaryTo || '/events'
 
   return <section className="hero-home hero-slider" aria-roledescription="carousel" aria-label="Featured church messages" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }}>
     <div className="hero-slides" aria-hidden="true">
-      {heroSlides.map((item, index) => <div key={item.image} className={`hero-slide ${index === active ? 'is-active' : ''}`} style={{ backgroundImage: `url("${item.image}")`, backgroundPosition: item.position }} />)}
+      {slides.map((item, index) => <div key={`${item.image}-${index}`} className={`hero-slide ${index === active ? 'is-active' : ''}`} style={{ backgroundImage: `url("${item.image}")`, backgroundPosition: item.position || 'center' }} />)}
     </div>
     <div className="hero-overlay" />
     <div className="container hero-content" aria-live="polite" aria-atomic="true">
       <div className="hero-content-inner" key={active}>
         <span className="eyebrow light">{slide.eyebrow}</span>
-        <h1>{slide.title}</h1>
+        <h1>{slide.titleLine1}<br />{slide.titleLine2}</h1>
         <p>{slide.text}</p>
         <div className="hero-actions">
-          <Link to={slide.primary[1]} className="button">{slide.primary[0]} <Icon name="arrow" /></Link>
+          <Link to={primaryTo} className="button">{slide.primaryLabel || 'Learn More'} <Icon name="arrow" /></Link>
           {secondaryExternal
-            ? <a href={slide.secondary[1]} className="button button-ghost" target="_blank" rel="noreferrer"><Icon name="map" /> {slide.secondary[0]}</a>
-            : <Link to={slide.secondary[1]} className="button button-ghost"><Icon name={active === 0 ? 'play' : 'book'} /> {slide.secondary[0]}</Link>}
+            ? <a href={secondaryHref} className="button button-ghost" target="_blank" rel="noreferrer"><Icon name="map" /> {slide.secondaryLabel || 'Open'}</a>
+            : <Link to={secondaryHref} className="button button-ghost"><Icon name={active === 0 ? 'play' : 'book'} /> {slide.secondaryLabel || 'Learn more'}</Link>}
         </div>
       </div>
     </div>
     <div className="hero-slider-controls">
       <button type="button" className="hero-slider-arrow is-prev" onClick={() => changeSlide(-1)} aria-label="Previous slide"><Icon name="arrow" size={19} /></button>
       <div className="hero-slider-dots" role="tablist" aria-label="Choose a slide">
-        {heroSlides.map((item, index) => <button key={item.eyebrow} type="button" className={index === active ? 'is-active' : ''} role="tab" aria-selected={index === active} aria-label={`Show slide ${index + 1}`} onClick={() => setActive(index)}><span /></button>)}
+        {slides.map((item, index) => <button key={`${item.eyebrow}-${index}`} type="button" className={index === active ? 'is-active' : ''} role="tab" aria-selected={index === active} aria-label={`Show slide ${index + 1}`} onClick={() => setActive(index)}><span /></button>)}
       </div>
-      <span className="hero-slide-count"><strong>0{active + 1}</strong><i />0{heroSlides.length}</span>
+      <span className="hero-slide-count"><strong>0{active + 1}</strong><i />0{slides.length}</span>
       <button type="button" className="hero-slider-arrow" onClick={() => changeSlide(1)} aria-label="Next slide"><Icon name="arrow" size={19} /></button>
     </div>
     <div className={`hero-slider-progress ${paused ? 'is-paused' : ''}`} key={`progress-${active}`} />
-    <div className="service-card"><span className="service-icon"><Icon name="calendar" size={24} /></span><span><small>Worship with us</small><strong>Saturdays at 1:45 PM</strong><a href={SITE.directions} target="_blank" rel="noreferrer">Casey Community Center · Get directions</a></span></div>
+    <div className="service-card"><span className="service-icon"><Icon name="calendar" size={24} /></span><span><small>Worship with us</small><strong>Saturdays at 1:45 PM</strong><a href={SITE.directions} target="_blank" rel="noreferrer">{SITE.place || 'Casey Community Center'} · Get directions</a></span></div>
   </section>
 }
 
 function Home() {
+  const { scriptureFull, siteEvents, holyDayCalendar, sermonArchive } = useSiteData()
+  const latestSermons = sermonArchive.slice(0, 3)
   return <>
     <HeroSlider />
     <section className="welcome section"><div className="container two-col"><div><span className="eyebrow">Welcome to CGI Maryland</span><h2>Growing in truth.<br />Living with purpose.</h2></div><div className="prose lead"><p>We are a Sabbath-keeping church family rooted in the whole Bible. Whether you are exploring faith, returning to church, or looking for a community to call home, there is a place for you here.</p><Link to="/ministry" className="text-link">Discover who we are <Icon name="arrow" size={17} /></Link></div></div><div className="container value-grid"><article><Icon name="book" size={28} /><h3>Biblically grounded</h3><p>Learning from both the Old and New Testaments as the inspired Word of God.</p></article><article><Icon name="users" size={28} /><h3>Genuinely welcoming</h3><p>A warm local congregation where faith, fellowship, and service come together.</p></article><article><Icon name="heart" size={28} /><h3>Christ centered</h3><p>Following Jesus Christ as Savior, High Priest, and coming King.</p></article></div></section>
@@ -426,11 +409,13 @@ function EventCard({ day, month, type, title, time }) {
 }
 
 function VisitCta() {
+  const { SITE } = useSiteData()
   return <section className="visit-cta"><div className="container visit-inner"><div><span className="eyebrow light">You are welcome here</span><h2>Join us this Sabbath</h2><p>Saturday at 1:45 PM · Casey Community Center, Aspen Room</p></div><a href={SITE.directions} className="button button-light" target="_blank" rel="noreferrer"><Icon name="map" /> Get Directions</a></div></section>
 }
 
 function Ministry() {
-  const sections = ministrySections.filter(section => section.title.toLowerCase() !== 'statement of beliefs')
+  const { ministrySections } = useSiteData()
+  const sections = ministrySections.filter(section => (section.title || section.heading || '').toLowerCase() !== 'statement of beliefs')
   return <>
     <PageHero eyebrow="Who we are" title="Our Ministry" text="A Bible-centered, Sabbath-keeping church committed to faith, truth, and service." image="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1800&q=85" />
     <section className="section"><div className="container article-layout">
@@ -449,11 +434,13 @@ function Ministry() {
 
 function Beliefs() {
   const [query, setQuery] = useState('')
+  const { beliefItems } = useSiteData()
   const filtered = beliefItems.filter(item => `${item.title} ${item.text || item.body}`.toLowerCase().includes(query.toLowerCase()))
   return <><PageHero eyebrow="What we believe" title="Statement of Beliefs" text="A clear summary of the biblical convictions that shape our worship, community, and way of life." image="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1800&q=85" /><section className="section"><div className="container intro-center"><span className="eyebrow">Rooted in Scripture</span><h2>The whole Bible. A living faith.</h2><p>Search or explore the beliefs below. Scripture references accompany every statement for continued personal study.</p><label className="search-box"><Icon name="search" /><span className="sr-only">Search beliefs</span><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search beliefs or keywords…" /></label></div><div className="container belief-list">{filtered.map((item, i) => <details key={`${item.title}-${i}`} open={i === 0 && !query}><summary><span>{String(i + 1).padStart(2, '0')}</span><strong>{item.title}</strong><span className="detail-plus">+</span></summary><div><Paras text={item.text || item.body} />{item.verses && <small>{item.verses}</small>}</div></details>)}</div>{!filtered.length && <p className="empty-state">No beliefs match “{query}”. Try another keyword.</p>}</section></>
 }
 
 function HolyDays() {
+  const { holyIntro, holyDayCalendar, holyDayDetails, site } = useSiteData()
   const observanceDates = [
     new Date('2026-03-31T00:00:00'),
     new Date('2026-04-02T00:00:00'),
@@ -514,7 +501,7 @@ function HolyDays() {
 
         <div className="calendar-download-row">
           <div><Icon name="book" size={23} /><span><small>Plan ahead</small><strong>View holy day dates through 2030</strong></span></div>
-          <a className="button button-light" href={siteContent.calendarDownload || 'https://cgimaryland.org/annual-holy-days/'} target="_blank" rel="noreferrer">Download Full Calendar <Icon name="arrow" /></a>
+          <a className="button button-light" href={site.calendarDownload || 'https://cgimaryland.org/annual-holy-days/'} target="_blank" rel="noreferrer">Download Full Calendar <Icon name="arrow" /></a>
         </div>
       </div>
     </section>
@@ -531,11 +518,12 @@ function HolyDays() {
 function Sermons() {
   const [query, setQuery] = useState('')
   const [visibleCount, setVisibleCount] = useState(24)
+  const { sermonArchive } = useSiteData()
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     if (!q) return sermonArchive
     return sermonArchive.filter(sermon => `${sermon.title} ${sermon.speaker} ${sermon.date}`.toLowerCase().includes(q))
-  }, [query])
+  }, [query, sermonArchive])
   const visible = filtered.slice(0, visibleCount)
   return <>
     <PageHero eyebrow="Messages for life" title="Sermon Archive" text="Listen to biblical teaching from CGI Maryland elders, deacons, and guest speakers." image="https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2022/03/06155747/sermons-banner.jpg" />
@@ -571,6 +559,7 @@ function Sermons() {
 
 function Events() {
   const [filter, setFilter] = useState('All')
+  const { SITE, siteEvents } = useSiteData()
   const now = new Date()
   const upcomingEvents = siteEvents
     .filter(event => new Date(event.end || event.start) >= now)
@@ -677,6 +666,7 @@ function Events() {
 }
 
 function Contact() {
+  const { SITE, contactPeople } = useSiteData()
   const [sent, setSent] = useState(false)
   function submit(e) {
     e.preventDefault()
@@ -817,6 +807,7 @@ function Contact() {
 }
 
 function Donate() {
+  const { donateInfo } = useSiteData()
   const qr = donateInfo.qr?.[0]
   const [checkoutReady, setCheckoutReady] = useState(Boolean(window.CollectCheckout))
   const [checkoutError, setCheckoutError] = useState('')
@@ -936,10 +927,10 @@ function Donate() {
         <div className="donate-mail-copy">
           <span className="eyebrow">Prefer to give by mail?</span>
           <h2>Donate by check or money order.</h2>
-          <p>Make your check or money order payable to <strong>“{donateInfo.mailTo.payable}”</strong> and mail it to:</p>
+          <p>Make your check or money order payable to <strong>“{donateInfo.mailTo?.payable || 'CGI Gaithersburg'}”</strong> and mail it to:</p>
           <address>
             <span><Icon name="map" size={18} /></span>
-            <div><strong>{donateInfo.mailTo.name}</strong><br />{donateInfo.mailTo.address}<br />{donateInfo.mailTo.city}</div>
+            <div><strong>{donateInfo.mailTo?.name}</strong><br />{donateInfo.mailTo?.address}<br />{donateInfo.mailTo?.city}</div>
           </address>
         </div>
       </div>
@@ -1107,6 +1098,7 @@ function BibleReader() {
 }
 
 function Privacy() {
+  const { privacyParas } = useSiteData()
   return <>
     <PageHero eyebrow="Your information" title="Privacy Policy" text="How CGI Maryland respects and protects the privacy of our visitors and donors." image="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=85" />
     <section className="section"><article className="container narrow longform">
@@ -1128,6 +1120,7 @@ function NotFound() {
 
 function App() {
   const path = usePath()
+  if (path === '/admin' || path.startsWith('/admin/')) return <AdminApp />
   const pages = { '/': <Home />, '/home-page': <Home />, '/ministry': <Ministry />, '/beliefs': <Beliefs />, '/sermons': <Sermons />, '/bible': <BibleReader />, '/annual-holy-days': <HolyDays />, '/events': <Events />, '/contact-us': <Contact />, '/donate': <Donate />, '/privacy-policy': <Privacy /> }
   return <><Header /><main id="main">{pages[path] || <NotFound />}</main><Footer /></>
 }
