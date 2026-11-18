@@ -1,14 +1,17 @@
 {
   "worship": {
     "place": "Casey Community Center",
-    "address": "810 S. Frederick Ave. (2nd Floor: Aspen Room)",
+    "room": "Aspen Room",
+    "address": "810 S. Frederick Ave. (2nd Floor)",
     "city": "Gaithersburg, MD 20877",
-    "time": "Services Begin on Saturday at 1:45PM",
+    "time": "Saturday at 1:45 PM",
+    "timeShort": "Sat 1:45 PM",
     "phone": "240-780-6910",
     "email": "info@cgimaryland.org",
     "directions": "https://www.google.com/maps/place/Casey+Community+Center/@39.124029,-77.181646,15z/data=!4m2!3m1!1s0x0:0x52be6355b9cc8394",
     "virtual": "Virtual Meeting (GoTo Meeting): To join us, click the “View Calendar” button below and click on the title of the event."
   },
+  "calendarYear": "2027",
   "scripture": "“If thou turn away thy foot from the Sabbath, from doing thy pleasure on my holy day; and call the sabbath a delight, the holy of the LORD, honourable; and shalt honour him, not doing thine own ways, nor finding thine own pleasure, nor speaking thine own words: Then shalt thou delight thyself in the LORD; and I will cause thee to ride upon the high places of the earth, and feed thee with the heritage of Jacob thy father: for the mouth of the LORD hath spoken it.”\n\nISAIAH 58:13-14",
   "beliefs": [
     {
@@ -297,6 +300,36 @@
       "date": "October 3"
     }
   ],
+  "calendar2027": [
+    {
+      "name": "New Testament Passover",
+      "date": "April 20 (Observed at Sundown)"
+    },
+    {
+      "name": "Feast of Unleavened Bread",
+      "date": "April 22 – 28"
+    },
+    {
+      "name": "Pentecost",
+      "date": "June 13"
+    },
+    {
+      "name": "Feast of Trumpets",
+      "date": "October 2"
+    },
+    {
+      "name": "Day of Atonement",
+      "date": "October 11"
+    },
+    {
+      "name": "Feast of Tabernacles",
+      "date": "October 16 – October 22"
+    },
+    {
+      "name": "Last Great Day",
+      "date": "October 23"
+    }
+  ],
   "calendarDownload": "https://cgimarylandv2.s3.amazonaws.com/wp-content/uploads/2025/12/16214030/Holy-Day-Calendar-2030.png",
   "events": [
     {
@@ -420,9 +453,9 @@
       },
       {
         "role": "Website Manager",
-        "name": "Herb Hanson",
+        "name": "Michael Reis",
         "phone": "240-780-6910",
-        "email": "webmaster@cgimaryland.org"
+        "email": "elder@cgimaryland.org"
       }
     ]
   },

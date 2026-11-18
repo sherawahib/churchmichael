@@ -141,6 +141,8 @@ export function ContentProvider({ children }) {
     sermons: content.sermons,
     heroSlides: content.heroSlides,
     ticker: content.ticker,
+    memorialPages: content.memorialPages || [],
+    settings: content.settings || {},
     loading,
     auth,
     saveMessage,

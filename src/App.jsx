@@ -1,24 +1,35 @@
 import { useEffect, useMemo, useState } from 'react'
 import { bibleBooks, oldTestamentCount } from './data/bibleBooks.js'
 import { useCMS } from './cms/ContentContext'
+import { BIBLE_VERSIONS } from './cms/store'
+import { fetchBibleChapter, getBibleVersion } from './cms/bibleApi'
 import AdminApp from './admin/AdminApp'
 
 function useSiteData() {
-  const { site, sermons, heroSlides, ticker } = useCMS()
+  const { site, sermons, heroSlides, ticker, memorialPages, settings } = useCMS()
   const worship = site.worship || {}
+  const calendarYear = site.calendarYear || '2027'
+  const holyDayCalendar = site[`calendar${calendarYear}`] || site.calendar2027 || site.calendar2026 || []
   return {
     site,
+    settings: settings || {},
+    memorialPages: (memorialPages || []).filter((page) => page.published !== false),
     SITE: {
-      address: `${worship.address || ''}, ${worship.city || ''}`,
+      address: `${worship.address || ''}${worship.room ? `, ${worship.room}` : ''}${worship.city ? `, ${worship.city}` : ''}`,
       phone: worship.phone || '',
       email: worship.email || '',
       directions: worship.directions || '#',
       place: worship.place || '',
+      room: worship.room || '',
       serviceTime: worship.time || '',
+      serviceTimeShort: worship.timeShort || worship.time || '',
       virtual: worship.virtual || '',
+      locationLine: [worship.place, worship.room].filter(Boolean).join(' · '),
+      addressLine: [worship.address, worship.city].filter(Boolean).join(', '),
     },
     beliefItems: site.beliefs || [],
-    holyDayCalendar: site.calendar2026 || [],
+    calendarYear,
+    holyDayCalendar,
     holyDayDetails: site.holyDays || [],
     ministrySections: site.ministry || [],
     siteEvents: site.events || [],
@@ -31,6 +42,24 @@ function useSiteData() {
     heroSlides: heroSlides || [],
     ticker: ticker || [],
   }
+}
+
+function prayerMailto(settings = {}, SITE = {}) {
+  const email = settings.prayerEmail || SITE.email || 'info@cgimaryland.org'
+  const subject = encodeURIComponent(settings.prayerSubject || 'Prayer Request — CGI Maryland')
+  const body = encodeURIComponent('Please share your prayer request below:\n\n')
+  return `mailto:${email}?subject=${subject}&body=${body}`
+}
+
+function toEmbedUrl(url = '') {
+  if (!url) return ''
+  if (url.includes('youtube.com/watch')) return url.replace('watch?v=', 'embed/').split('&')[0]
+  if (url.includes('youtu.be/')) return `https://www.youtube.com/embed/${url.split('youtu.be/')[1].split('?')[0]}`
+  if (url.includes('vimeo.com/') && !url.includes('player.vimeo.com')) {
+    const id = url.split('vimeo.com/')[1].split(/[?/]/)[0]
+    return `https://player.vimeo.com/video/${id}`
+  }
+  return url
 }
 
 const icons = {
@@ -116,11 +145,13 @@ function usePath() {
 
 function Header() {
   const path = usePath()
-  const { SITE, ticker } = useSiteData()
+  const { SITE, ticker, memorialPages, settings } = useSiteData()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [openMenu, setOpenMenu] = useState(null)
   const tickerItems = ticker.length ? [...ticker, ...ticker] : []
+  const showMemorial = settings.showMemorialInMenu !== false && memorialPages.length > 0
+  const memorialHref = memorialPages[0] ? `/in-memory/${memorialPages[0].slug}` : '/in-memory'
 
   useEffect(() => {
     const close = () => { setOpen(false); setOpenMenu(null) }
@@ -147,9 +178,9 @@ function Header() {
     <div className="topbar">
       <div className="container topbar-inner">
         <div className="topbar-left">
-          <span className="topbar-pill"><Icon name="clock" size={14} /> Sabbath · Sat 1:45 PM</span>
+          <span className="topbar-pill"><Icon name="clock" size={14} /> Sabbath · {SITE.serviceTimeShort || SITE.serviceTime}</span>
           <span className="topbar-divider" aria-hidden="true" />
-          <a className="topbar-item" href={SITE.directions} target="_blank" rel="noreferrer"><Icon name="map" size={14} /> Casey Community Center</a>
+          <a className="topbar-item" href={SITE.directions} target="_blank" rel="noreferrer"><Icon name="map" size={14} /> {SITE.place || 'Casey Community Center'}</a>
         </div>
         <div className="topbar-ticker" aria-live="polite">
           <span className="topbar-ticker-label">This week</span>
@@ -232,6 +263,7 @@ function Header() {
           </div>
           <Link to="/bible" className={isActive('/bible') ? 'is-active' : ''} onClick={() => setOpen(false)}>Read Bible</Link>
           <Link to="/annual-holy-days" className={isActive('/annual-holy-days') ? 'is-active' : ''} onClick={() => setOpen(false)}>Annual Holy Days</Link>
+          {showMemorial && <Link to={memorialHref} className={isActive('/in-memory') ? 'is-active' : ''} onClick={() => setOpen(false)}>{settings.memorialMenuLabel || 'In Memory'}</Link>}
           <Link to="/contact-us" className={isActive('/contact-us') ? 'is-active' : ''} onClick={() => setOpen(false)}>Contact</Link>
           <a href="https://www.cgi.org/" target="_blank" rel="noreferrer" className="nav-external">CGI.org</a>
           <div className="nav-cta-group">
@@ -246,7 +278,8 @@ function Header() {
 }
 
 function Footer() {
-  const { SITE } = useSiteData()
+  const { SITE, settings, memorialPages } = useSiteData()
+  const memorialHref = memorialPages[0] ? `/in-memory/${memorialPages[0].slug}` : '/in-memory'
   return <footer className="site-footer">
     <div className="footer-glow" aria-hidden="true" />
     <div className="container footer-invitation">
@@ -257,19 +290,19 @@ function Footer() {
       </div>
       <div className="footer-invitation-actions">
         <a href={SITE.directions} className="button button-light" target="_blank" rel="noreferrer"><Icon name="map" /> Plan Your Visit</a>
-        <Link to="/contact-us" className="footer-prayer-link">Request Prayer <Icon name="arrow" size={17} /></Link>
+        <a href={prayerMailto(settings, SITE)} className="footer-prayer-link">Request Prayer <Icon name="arrow" size={17} /></a>
       </div>
     </div>
 
     <div className="container footer-quick-grid">
       <a href={SITE.directions} target="_blank" rel="noreferrer" className="footer-quick-card">
         <span className="footer-quick-icon"><Icon name="map" size={21} /></span>
-        <span><small>Our location</small><strong>Casey Community Center</strong><em>810 S. Frederick Ave. · Aspen Room</em></span>
+        <span><small>Our location</small><strong>{SITE.place}</strong><em>{SITE.addressLine}{SITE.room ? ` · ${SITE.room}` : ''}</em></span>
         <Icon name="arrow" size={18} />
       </a>
       <Link to="/events" className="footer-quick-card">
         <span className="footer-quick-icon"><Icon name="calendar" size={21} /></span>
-        <span><small>Weekly worship</small><strong>Saturday at 1:45 PM</strong><em>In person and virtual connection</em></span>
+        <span><small>Weekly worship</small><strong>{SITE.serviceTime}</strong><em>In person and virtual connection</em></span>
         <Icon name="arrow" size={18} />
       </Link>
       <a href={`tel:${SITE.phone}`} className="footer-quick-card">
@@ -292,11 +325,13 @@ function Footer() {
         <Link to="/bible">Read the Bible <Icon name="arrow" size={14} /></Link>
         <Link to="/annual-holy-days">Annual Holy Days <Icon name="arrow" size={14} /></Link>
         <Link to="/sermons">Sermon Archive <Icon name="arrow" size={14} /></Link>
+        {memorialPages.length > 0 && <Link to={memorialHref}>{settings.memorialMenuLabel || 'In Memory'} <Icon name="arrow" size={14} /></Link>}
       </div>
       <div className="footer-link-column">
         <h3>Connect</h3>
         <Link to="/events">Events &amp; Services <Icon name="arrow" size={14} /></Link>
         <Link to="/contact-us">Contact Us <Icon name="arrow" size={14} /></Link>
+        <a href={prayerMailto(settings, SITE)}>Request Prayer <Icon name="arrow" size={14} /></a>
         <Link to="/donate">Support the Mission <Icon name="arrow" size={14} /></Link>
         <a href="https://www.cgi.org/" target="_blank" rel="noreferrer">Visit CGI.org <Icon name="arrow" size={14} /></a>
       </div>
@@ -367,19 +402,19 @@ function HeroSlider() {
       <button type="button" className="hero-slider-arrow" onClick={() => changeSlide(1)} aria-label="Next slide"><Icon name="arrow" size={19} /></button>
     </div>
     <div className={`hero-slider-progress ${paused ? 'is-paused' : ''}`} key={`progress-${active}`} />
-    <div className="service-card"><span className="service-icon"><Icon name="calendar" size={24} /></span><span><small>Worship with us</small><strong>Saturdays at 1:45 PM</strong><a href={SITE.directions} target="_blank" rel="noreferrer">{SITE.place || 'Casey Community Center'} · Get directions</a></span></div>
+    <div className="service-card"><span className="service-icon"><Icon name="calendar" size={24} /></span><span><small>Worship with us</small><strong>{SITE.serviceTime}</strong><a href={SITE.directions} target="_blank" rel="noreferrer">{SITE.locationLine || SITE.place} · Get directions</a></span></div>
   </section>
 }
 
 function Home() {
-  const { scriptureFull, siteEvents, holyDayCalendar, sermonArchive } = useSiteData()
+  const { scriptureFull, siteEvents, holyDayCalendar, sermonArchive, calendarYear } = useSiteData()
   const latestSermons = sermonArchive.slice(0, 3)
   return <>
     <HeroSlider />
     <section className="welcome section"><div className="container two-col"><div><span className="eyebrow">Welcome to CGI Maryland</span><h2>Growing in truth.<br />Living with purpose.</h2></div><div className="prose lead"><p>We are a Sabbath-keeping church family rooted in the whole Bible. Whether you are exploring faith, returning to church, or looking for a community to call home, there is a place for you here.</p><Link to="/ministry" className="text-link">Discover who we are <Icon name="arrow" size={17} /></Link></div></div><div className="container value-grid"><article><Icon name="book" size={28} /><h3>Biblically grounded</h3><p>Learning from both the Old and New Testaments as the inspired Word of God.</p></article><article><Icon name="users" size={28} /><h3>Genuinely welcoming</h3><p>A warm local congregation where faith, fellowship, and service come together.</p></article><article><Icon name="heart" size={28} /><h3>Christ centered</h3><p>Following Jesus Christ as Savior, High Priest, and coming King.</p></article></div></section>
     <section className="scripture-band"><div className="container scripture-inner"><span className="quote-mark">“</span><blockquote>{(scriptureFull || "").replace(/^“|”$/g, "").replace(/\s*ISAIAH\s*58:13-14\s*$/i, "").trim()}</blockquote><cite>Isaiah 58:13–14</cite></div></section>
     <section className="section events-section"><div className="container section-heading"><div><span className="eyebrow">Come together</span><h2>Upcoming events</h2></div><Link to="/events" className="text-link">View full calendar <Icon name="arrow" size={17} /></Link></div><div className="container event-grid">{siteEvents.slice(0, 3).map(event => { const start = formatEventParts(event.start); const end = formatEventParts(event.end); const type = event.name.toLowerCase().includes('prayer') ? 'Prayer' : event.name.toLowerCase().includes('bible') ? 'Study' : 'Service'; return <EventCard key={`${event.name}-${event.start}`} day={start.day} month={start.month} type={type} title={event.name} time={`${start.time}${end.time ? `–${end.time}` : ''}`} /> })}</div></section>
-    <section className="section holy-preview"><div className="container holy-preview-grid"><div className="holy-image" role="img" aria-label="Open Bible in warm sunlight" /><div><span className="eyebrow">God’s appointed times</span><h2>2026 Holy Day calendar</h2><p>Discover the annual holy days and how each one reveals a part of God’s plan of salvation.</p><div className="mini-calendar">{holyDayCalendar.map(item => <div key={item.name}><strong>{item.name}</strong><span>{item.date}</span></div>)}</div><Link to="/annual-holy-days" className="button">Explore the Holy Days <Icon name="arrow" /></Link></div></div></section>
+    <section className="section holy-preview"><div className="container holy-preview-grid"><div className="holy-image" role="img" aria-label="Open Bible in warm sunlight" /><div><span className="eyebrow">God’s appointed times</span><h2>{calendarYear} Holy Day calendar</h2><p>Discover the annual holy days and how each one reveals a part of God’s plan of salvation.</p><div className="mini-calendar">{holyDayCalendar.map(item => <div key={item.name}><strong>{item.name}</strong><span>{item.date}</span></div>)}</div><Link to="/annual-holy-days" className="button">Explore the Holy Days <Icon name="arrow" /></Link></div></div></section>
     <section className="section sermons-preview">
       <div className="container intro-center">
         <span className="eyebrow">Listen and grow</span>
@@ -392,7 +427,12 @@ function Home() {
             <small>{sermon.date}</small>
             <h3>{decodeHtml(sermon.title)}</h3>
             <p><strong>Speaker:</strong> {sermon.speaker}</p>
-            <audio controls preload="metadata" src={sermon.audio}>Your browser does not support audio.</audio>
+            {sermon.audio && <audio controls preload="metadata" src={sermon.audio}>Your browser does not support audio.</audio>}
+            {sermon.video && (
+              <div className="sermon-video-embed">
+                <iframe src={sermon.video.includes('watch?v=') ? sermon.video.replace('watch?v=', 'embed/') : sermon.video} title={decodeHtml(sermon.title)} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" />
+              </div>
+            )}
           </article>
         ))}
       </div>
@@ -410,7 +450,7 @@ function EventCard({ day, month, type, title, time }) {
 
 function VisitCta() {
   const { SITE } = useSiteData()
-  return <section className="visit-cta"><div className="container visit-inner"><div><span className="eyebrow light">You are welcome here</span><h2>Join us this Sabbath</h2><p>Saturday at 1:45 PM · Casey Community Center, Aspen Room</p></div><a href={SITE.directions} className="button button-light" target="_blank" rel="noreferrer"><Icon name="map" /> Get Directions</a></div></section>
+  return <section className="visit-cta"><div className="container visit-inner"><div><span className="eyebrow light">You are welcome here</span><h2>Join us this Sabbath</h2><p>{SITE.serviceTime} · {SITE.locationLine}</p></div><a href={SITE.directions} className="button button-light" target="_blank" rel="noreferrer"><Icon name="map" /> Get Directions</a></div></section>
 }
 
 function Ministry() {
@@ -440,19 +480,20 @@ function Beliefs() {
 }
 
 function HolyDays() {
-  const { holyIntro, holyDayCalendar, holyDayDetails, site } = useSiteData()
+  const { holyIntro, holyDayCalendar, holyDayDetails, site, calendarYear } = useSiteData()
+  const yearNum = Number(calendarYear) || 2027
   const observanceDates = [
-    new Date('2026-03-31T00:00:00'),
-    new Date('2026-04-02T00:00:00'),
-    new Date('2026-05-24T00:00:00'),
-    new Date('2026-09-12T00:00:00'),
-    new Date('2026-09-21T00:00:00'),
-    new Date('2026-09-26T00:00:00'),
-    new Date('2026-10-03T00:00:00'),
+    new Date(`${yearNum}-04-20T00:00:00`),
+    new Date(`${yearNum}-04-22T00:00:00`),
+    new Date(`${yearNum}-06-13T00:00:00`),
+    new Date(`${yearNum}-10-02T00:00:00`),
+    new Date(`${yearNum}-10-11T00:00:00`),
+    new Date(`${yearNum}-10-16T00:00:00`),
+    new Date(`${yearNum}-10-23T00:00:00`),
   ]
   const today = new Date()
   today.setHours(0, 0, 0, 0)
-  const nextIndex = today.getFullYear() === 2026 ? observanceDates.findIndex(date => date >= today) : -1
+  const nextIndex = today.getFullYear() === yearNum ? observanceDates.findIndex(date => date >= today) : (today.getFullYear() < yearNum ? 0 : -1)
 
   return <>
     <PageHero eyebrow="God’s appointed times" title="Annual Holy Days" text="Seven annual festivals that illuminate God’s plan of salvation for mankind." image="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1800&q=85" />
@@ -467,17 +508,17 @@ function HolyDays() {
         <div className="calendar-advanced-heading">
           <div>
             <span className="eyebrow light">God’s appointed times</span>
-            <h2>2026 Holy Day Calendar</h2>
-            <p>Seven annual observances. One unfolding picture of God’s plan of salvation.</p>
+            <h2>{calendarYear} Holy Day Calendar</h2>
+            <p>Seven annual observances. One unfolding picture of God’s plan of salvation. Source: <a href="https://www.cgi.org/holy-days" target="_blank" rel="noreferrer" style={{ color: '#e8c96a' }}>cgi.org/holy-days</a></p>
           </div>
-          <div className="calendar-year-seal" aria-label="Calendar year 2026">
+          <div className="calendar-year-seal" aria-label={`Calendar year ${calendarYear}`}>
             <small>Sacred calendar</small>
-            <strong>2026</strong>
+            <strong>{calendarYear}</strong>
             <span>Leviticus 23</span>
           </div>
         </div>
 
-        {nextIndex >= 0 && <div className="calendar-next-banner">
+        {nextIndex >= 0 && holyDayCalendar[nextIndex] && <div className="calendar-next-banner">
           <span className="calendar-next-icon"><Icon name="calendar" size={22} /></span>
           <div><small>Next observance</small><strong>{holyDayCalendar[nextIndex].name}</strong></div>
           <span>{holyDayCalendar[nextIndex].date}</span>
@@ -501,7 +542,7 @@ function HolyDays() {
 
         <div className="calendar-download-row">
           <div><Icon name="book" size={23} /><span><small>Plan ahead</small><strong>View holy day dates through 2030</strong></span></div>
-          <a className="button button-light" href={site.calendarDownload || 'https://cgimaryland.org/annual-holy-days/'} target="_blank" rel="noreferrer">Download Full Calendar <Icon name="arrow" /></a>
+          <a className="button button-light" href={site.calendarDownload || 'https://www.cgi.org/holy-days'} target="_blank" rel="noreferrer">Official CGI Calendar <Icon name="arrow" /></a>
         </div>
       </div>
     </section>
@@ -542,7 +583,13 @@ function Sermons() {
             <div className="archive-copy">
               <h3>{decodeHtml(sermon.title)}</h3>
               <p><strong>Speaker:</strong> {sermon.speaker}</p>
-              <audio controls preload="metadata" src={sermon.audio}>Your browser does not support audio.</audio>
+              {sermon.audio && <audio controls preload="metadata" src={sermon.audio}>Your browser does not support audio.</audio>}
+              {sermon.video && (
+                <div className="sermon-video-embed">
+                  <iframe src={toEmbedUrl(sermon.video)} title={decodeHtml(sermon.title)} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen loading="lazy" />
+                </div>
+              )}
+              {!sermon.audio && !sermon.video && <p className="muted">Media coming soon</p>}
             </div>
           </article>
         ))}
@@ -654,9 +701,9 @@ function Events() {
 
     <section className="events-weekly-band">
       <div className="container events-weekly-grid">
-        <div className="events-weekly-intro"><span className="eyebrow light">Every Sabbath</span><h2>Weekly worship<br />at 1:45 PM.</h2><p>Join us in person at the Casey Community Center or connect virtually.</p></div>
+        <div className="events-weekly-intro"><span className="eyebrow light">Every Sabbath</span><h2>Weekly worship<br />{SITE.serviceTime}.</h2><p>Join us in person at {SITE.place} or connect virtually.</p></div>
         <div className="events-weekly-details">
-          <div><span><Icon name="map" size={21} /></span><p><small>In person</small><strong>Casey Community Center</strong><em>810 S. Frederick Ave. · Aspen Room</em></p></div>
+          <div><span><Icon name="map" size={21} /></span><p><small>In person</small><strong>{SITE.place}</strong><em>{SITE.addressLine}{SITE.room ? ` · ${SITE.room}` : ''}</em></p></div>
           <div><span><Icon name="users" size={21} /></span><p><small>Join online</small><strong>Virtual meeting available</strong><em>Open an event to find connection details</em></p></div>
         </div>
         <div className="events-weekly-actions"><a href={SITE.directions} className="button button-light" target="_blank" rel="noreferrer">Get Directions <Icon name="arrow" /></a><Link to="/contact-us" className="footer-prayer-link">Need help connecting? <Icon name="arrow" size={16} /></Link></div>
@@ -666,14 +713,17 @@ function Events() {
 }
 
 function Contact() {
-  const { SITE, contactPeople } = useSiteData()
+  const { SITE, contactPeople, settings } = useSiteData()
   const [sent, setSent] = useState(false)
+  const params = new URLSearchParams(window.location.search)
+  const defaultTopic = params.get('topic') === 'prayer' ? 'Prayer request' : ''
   function submit(e) {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
     const topic = data.get('topic')
+    const to = topic === 'Prayer request' ? (settings.prayerEmail || SITE.email) : SITE.email
     const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nPhone: ${data.get('phone') || 'Not provided'}\n\n${data.get('message')}`
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(`${topic} — message from ${data.get('name')}`)}&body=${encodeURIComponent(body)}`
+    window.location.href = `mailto:${to}?subject=${encodeURIComponent(`${topic} — message from ${data.get('name')}`)}&body=${encodeURIComponent(body)}`
     setSent(true)
   }
 
@@ -715,10 +765,10 @@ function Contact() {
           <div className="contact-service-panel">
             <div className="contact-service-top">
               <span><Icon name="calendar" size={23} /></span>
-              <div><small>Weekly Sabbath service</small><strong>Saturday at 1:45 PM</strong></div>
+              <div><small>Weekly Sabbath service</small><strong>{SITE.serviceTime}</strong></div>
             </div>
             <div className="contact-service-details">
-              <p><Icon name="map" size={16} /> Casey Community Center, 2nd Floor · Aspen Room</p>
+              <p><Icon name="map" size={16} /> {SITE.locationLine}{SITE.addressLine ? ` · ${SITE.addressLine}` : ''}</p>
               <p><Icon name="users" size={16} /> In-person worship and virtual connection</p>
             </div>
             <Link to="/events" className="text-link">View service calendar <Icon name="arrow" size={16} /></Link>
@@ -726,7 +776,7 @@ function Contact() {
 
           <div className="contact-assurance">
             <Icon name="heart" size={22} />
-            <p><strong>Need prayer?</strong> Select “Prayer request” in the form. Your message will be received with care.</p>
+            <p><strong>Need prayer?</strong> Select “Prayer request” below, or <a href={prayerMailto(settings, SITE)}>email a prayer request directly</a>.</p>
           </div>
         </div>
 
@@ -743,7 +793,7 @@ function Contact() {
           <div className="form-row">
             <label>Phone number <input name="phone" type="tel" autoComplete="tel" placeholder="Optional" /></label>
             <label>How can we help? <span aria-hidden="true">*</span>
-              <select name="topic" required defaultValue="">
+              <select name="topic" required defaultValue={defaultTopic}>
                 <option value="" disabled>Select a topic</option>
                 <option>General question</option>
                 <option>Prayer request</option>
@@ -798,8 +848,8 @@ function Contact() {
       <div className="contact-map-card">
         <span className="eyebrow light">Worship with us</span>
         <h2>Find your way here.</h2>
-        <p><strong>{SITE.place}</strong><br />810 S. Frederick Ave.<br />2nd Floor · Aspen Room<br />Gaithersburg, MD 20877</p>
-        <div><Icon name="clock" size={18} /><span><small>Service begins</small><strong>Saturday · 1:45 PM</strong></span></div>
+        <p><strong>{SITE.place}</strong><br />{SITE.addressLine}<br />{SITE.room}</p>
+        <div><Icon name="clock" size={18} /><span><small>Service begins</small><strong>{SITE.serviceTime}</strong></span></div>
         <a href={SITE.directions} className="button button-light" target="_blank" rel="noreferrer">Open in Google Maps <Icon name="arrow" /></a>
       </div>
     </section>
@@ -947,6 +997,11 @@ function Donate() {
 }
 
 function BibleReader() {
+  const { settings } = useSiteData()
+  const enabledVersions = (settings.bibleEnabledVersions || ['kjv', 'web', 'NKJV', 'NIV'])
+    .map((id) => getBibleVersion(id))
+    .filter(Boolean)
+  const [versionId, setVersionId] = useState(settings.bibleDefaultVersion || 'kjv')
   const [bookIndex, setBookIndex] = useState(42)
   const [chapter, setChapter] = useState(3)
   const [verses, setVerses] = useState([])
@@ -957,24 +1012,22 @@ function BibleReader() {
   const [ready, setReady] = useState(false)
 
   const currentBook = bibleBooks[bookIndex]
+  const currentVersion = getBibleVersion(versionId)
   const isFirst = bookIndex === 0 && chapter === 1
   const isLast = bookIndex === bibleBooks.length - 1 && chapter === currentBook.chapters
 
-  const loadChapter = async (nextBookIndex, nextChapter, direction = 'next') => {
+  const loadChapter = async (nextBookIndex, nextChapter, direction = 'next', nextVersion = versionId) => {
     const nextBook = bibleBooks[nextBookIndex]
     setLoading(true)
     setError('')
     try {
-      const reference = encodeURIComponent(`${nextBook.name} ${nextChapter}`)
-      const response = await fetch(`https://bible-api.com/${reference}?translation=kjv`)
-      if (!response.ok) throw new Error('Bible passage unavailable')
-      const data = await response.json()
-      if (!Array.isArray(data.verses)) throw new Error('Bible passage unavailable')
+      const nextVerses = await fetchBibleChapter(nextBook.name, nextChapter, nextVersion)
 
       const showChapter = () => {
         setBookIndex(nextBookIndex)
         setChapter(nextChapter)
-        setVerses(data.verses)
+        setVersionId(nextVersion)
+        setVerses(nextVerses)
         setLoading(false)
         setReady(true)
       }
@@ -986,14 +1039,14 @@ function BibleReader() {
       } else {
         showChapter()
       }
-    } catch {
+    } catch (err) {
       setLoading(false)
-      setError('We could not load this chapter. Check your connection and try again.')
+      setError(err.message || 'We could not load this chapter. Check your connection and try again.')
     }
   }
 
   useEffect(() => {
-    loadChapter(42, 3)
+    loadChapter(42, 3, 'next', settings.bibleDefaultVersion || 'kjv')
     // Initial reader load only.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -1032,13 +1085,19 @@ function BibleReader() {
       <div className="container bible-hero-inner">
         <span className="eyebrow light">The living Word</span>
         <h1>Read the Holy Bible</h1>
-        <p>Turn the pages, select any of the 66 books, and read the King James Version in a quiet, book-inspired experience.</p>
+        <p>Turn the pages and read in KJV, NKJV, NIV, or WEB in a quiet, book-inspired experience.</p>
       </div>
     </section>
 
     <section className="bible-reader-section">
       <div className="container bible-reader-wrap">
         <div className="bible-toolbar" aria-label="Bible reading controls">
+          <div className="bible-select-group">
+            <label htmlFor="bible-version">Version</label>
+            <select id="bible-version" value={versionId} disabled={loading} onChange={event => loadChapter(bookIndex, chapter, 'next', event.target.value)}>
+              {(enabledVersions.length ? enabledVersions : BIBLE_VERSIONS).map((version) => <option value={version.id} key={version.id}>{version.label}</option>)}
+            </select>
+          </div>
           <div className="bible-select-group">
             <label htmlFor="bible-book">Book</label>
             <select id="bible-book" value={bookIndex} disabled={loading} onChange={event => loadChapter(Number(event.target.value), 1, Number(event.target.value) >= bookIndex ? 'next' : 'previous')}>
@@ -1063,7 +1122,7 @@ function BibleReader() {
               <button type="button" onClick={() => setFontScale(Math.min(1.35, fontScale + .1))} aria-label="Increase text size">A+</button>
             </div>
           </div>
-          <span className="bible-translation"><Icon name="book" size={17} /> King James Version</span>
+          <span className="bible-translation"><Icon name="book" size={17} /> {currentVersion.label}</span>
         </div>
 
         <div className={`bible-book ${flip ? `is-turning-${flip}` : ''}`} style={{ '--bible-font-scale': fontScale }}>
@@ -1077,7 +1136,7 @@ function BibleReader() {
           </div>
           <div className="bible-spine" aria-hidden="true" />
           <div className="bible-page bible-page-right">
-            <div className="bible-page-heading"><strong>Chapter {chapter}</strong><span>KJV</span></div>
+            <div className="bible-page-heading"><strong>Chapter {chapter}</strong><span>{currentVersion.short}</span></div>
             <div className="bible-page-content">
               {error ? <div className="bible-error"><p>{error}</p><button type="button" onClick={() => loadChapter(bookIndex, chapter)}>Try again</button></div> : renderVerses(verses.slice(pageBreak))}
             </div>
@@ -1088,10 +1147,10 @@ function BibleReader() {
 
         <div className="bible-navigation">
           <button type="button" onClick={goPrevious} disabled={isFirst || loading}><Icon name="arrow" size={18} /> Previous chapter</button>
-          <div aria-live="polite"><strong>{currentBook.name} {chapter}</strong><span>King James Version</span></div>
+          <div aria-live="polite"><strong>{currentBook.name} {chapter}</strong><span>{currentVersion.label}</span></div>
           <button type="button" onClick={goNext} disabled={isLast || loading}>Next chapter <Icon name="arrow" size={18} /></button>
         </div>
-        <p className="bible-credit">Scripture text: King James Version (Public Domain). An internet connection is required to load new chapters.</p>
+        <p className="bible-credit">Scripture text provided for personal study. An internet connection is required to load chapters. Some versions may be unavailable depending on provider access.</p>
       </div>
     </section>
   </>
@@ -1114,6 +1173,24 @@ function Privacy() {
   </>
 }
 
+function MemorialPage({ slug }) {
+  const { memorialPages } = useSiteData()
+  const page = memorialPages.find((item) => item.slug === slug) || memorialPages[0]
+  if (!page) {
+    return <section className="not-found"><div><span className="eyebrow">Memorial</span><h1>Page not found</h1><p>No memorial page has been published yet. Add one in the admin panel.</p><Link to="/" className="button">Return Home <Icon name="arrow" /></Link></div></section>
+  }
+  return <>
+    <PageHero eyebrow={page.subtitle || 'In loving memory'} title={page.title} text={page.honoree ? `Honoring ${page.honoree}${page.dates ? ` · ${page.dates}` : ''}` : page.body?.slice(0, 140)} image={page.image || 'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1800&q=85'} />
+    <section className="section">
+      <article className="container narrow longform">
+        {page.honoree && <h2>{page.honoree}</h2>}
+        {page.dates && <p className="lead">{page.dates}</p>}
+        <Paras text={page.body} />
+      </article>
+    </section>
+  </>
+}
+
 function NotFound() {
   return <section className="not-found"><div><span className="eyebrow">404</span><h1>Page not found</h1><p>The page you are looking for may have moved.</p><Link to="/" className="button">Return Home <Icon name="arrow" /></Link></div></section>
 }
@@ -1121,6 +1198,10 @@ function NotFound() {
 function App() {
   const path = usePath()
   if (path === '/admin' || path.startsWith('/admin/')) return <AdminApp />
+  if (path === '/in-memory' || path.startsWith('/in-memory/')) {
+    const slug = path.replace(/^\/in-memory\/?/, '') || undefined
+    return <><Header /><main id="main"><MemorialPage slug={slug} /></main><Footer /></>
+  }
   const pages = { '/': <Home />, '/home-page': <Home />, '/ministry': <Ministry />, '/beliefs': <Beliefs />, '/sermons': <Sermons />, '/bible': <BibleReader />, '/annual-holy-days': <HolyDays />, '/events': <Events />, '/contact-us': <Contact />, '/donate': <Donate />, '/privacy-policy': <Privacy /> }
   return <><Header /><main id="main">{pages[path] || <NotFound />}</main><Footer /></>
 }

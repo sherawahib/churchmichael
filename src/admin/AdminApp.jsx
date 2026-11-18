@@ -1,17 +1,20 @@
 import { useMemo, useState } from 'react'
 import { useCMS } from '../cms/ContentContext'
-import { DEFAULT_ADMIN_PASSWORD } from '../cms/store'
+import { BIBLE_VERSIONS, DEFAULT_ADMIN_PASSWORD } from '../cms/store'
 import './admin.css'
 
 const NAV = [
   { id: 'dashboard', label: 'Dashboard' },
   { id: 'site', label: 'Site & Worship' },
+  { id: 'prayer', label: 'Prayer Request' },
   { id: 'hero', label: 'Hero Slides' },
-  { id: 'ticker', label: 'Top Ticker' },
-  { id: 'sermons', label: 'Sermons' },
+  { id: 'ticker', label: 'Top Ticker / Events Scroll' },
+  { id: 'sermons', label: 'Sermons (Audio/Video)' },
   { id: 'events', label: 'Events' },
   { id: 'beliefs', label: 'Beliefs' },
-  { id: 'holy', label: 'Holy Days' },
+  { id: 'holy', label: 'Holy Days Calendar' },
+  { id: 'memorial', label: 'In Memory Pages' },
+  { id: 'bible', label: 'Bible Versions' },
   { id: 'ministry', label: 'Ministry' },
   { id: 'contact', label: 'Contact Team' },
   { id: 'donate', label: 'Donate' },
@@ -82,11 +85,11 @@ function Dashboard() {
       <div className="admin-panel">
         <div className="admin-panel-head"><h2>Quick guide</h2></div>
         <p className="admin-hint">
-          Use the left menu to edit any section of the website. Changes save immediately and update the live site content in this browser.
-          Use <strong>Export JSON</strong> in Settings to download a backup, then replace <code>public/cms-data.json</code> and redeploy so every visitor sees the same content.
+          From this panel you can manage audio/video sermons, events, header ticker, worship time &amp; Casey Center room, prayer request email, holy day calendar, Bible versions, memorial pages, contacts, and more.
+          Changes save immediately. Use <strong>Export JSON</strong> in Settings, replace <code>public/cms-data.json</code>, and redeploy so every visitor sees the same content.
         </p>
         <p className="admin-hint">
-          Current worship contact: {site.worship?.email} · {site.worship?.phone}
+          Current worship: {site.worship?.time} · {site.worship?.place} · {site.worship?.room} · {site.worship?.phone}
         </p>
       </div>
     </>
@@ -104,17 +107,56 @@ function SiteEditor() {
     })
   }
 
+  const fields = [
+    ['place', 'Place / building name'],
+    ['room', 'Room / location note (can change anytime)'],
+    ['address', 'Street address'],
+    ['city', 'City / ZIP'],
+    ['time', 'Service time (full, e.g. Saturday at 1:45 PM)'],
+    ['timeShort', 'Service time short (header, e.g. Sat 1:45 PM)'],
+    ['phone', 'Phone'],
+    ['email', 'Email'],
+    ['directions', 'Directions / Google Maps URL'],
+    ['virtual', 'Virtual meeting notes'],
+  ]
+
   return (
     <div className="admin-panel">
-      <div className="admin-panel-head"><h2>Worship & contact details</h2></div>
+      <div className="admin-panel-head"><h2>Worship, Casey Center & service time</h2></div>
+      <p className="admin-hint">Update service time, room location, and address here. Changes appear across the whole website (header, footer, contact, events).</p>
       <div className="admin-fields">
-        {['place', 'address', 'city', 'time', 'phone', 'email', 'directions', 'virtual'].map((key) => (
-          <Field key={key} label={key} full={key === 'virtual' || key === 'directions' || key === 'address'}>
+        {fields.map(([key, label]) => (
+          <Field key={key} label={label} full={key === 'virtual' || key === 'directions' || key === 'address'}>
             <input value={worship[key] || ''} onChange={(e) => updateWorship(key, e.target.value)} />
           </Field>
         ))}
         <Field label="Home scripture text" full>
           <textarea value={site.scripture || ''} onChange={(e) => persist((d) => { d.site.scripture = e.target.value; return d })} rows={6} />
+        </Field>
+      </div>
+    </div>
+  )
+}
+
+function PrayerEditor() {
+  const { content, persist } = useCMS()
+  const settings = content.settings || {}
+  function setSetting(key, value) {
+    persist((d) => {
+      d.settings = { ...(d.settings || {}), [key]: value }
+      return d
+    })
+  }
+  return (
+    <div className="admin-panel">
+      <div className="admin-panel-head"><h2>Request Prayer link</h2></div>
+      <p className="admin-hint">Footer “Request Prayer” opens an email. Set the destination email and subject here so the link always works.</p>
+      <div className="admin-fields">
+        <Field label="Prayer request email">
+          <input value={settings.prayerEmail || ''} onChange={(e) => setSetting('prayerEmail', e.target.value)} placeholder="elder@cgimaryland.org" />
+        </Field>
+        <Field label="Email subject">
+          <input value={settings.prayerSubject || ''} onChange={(e) => setSetting('prayerSubject', e.target.value)} />
         </Field>
       </div>
     </div>
@@ -319,17 +361,18 @@ function SermonsEditor() {
       title={`Sermons (${sermons.length})`}
       items={sermons}
       columns={['Date', 'Title', 'Speaker']}
-      blank={{ date: '', title: '', speaker: '', audio: '' }}
+      blank={{ date: '', title: '', speaker: '', audio: '', video: '' }}
       renderRow={(item) => [
         item.date,
-        <><strong>{item.title}</strong><div className="muted">{item.audio ? 'Audio linked' : 'No audio'}</div></>,
+        <><strong>{item.title}</strong><div className="muted">{[item.audio ? 'Audio' : null, item.video ? 'Video' : null].filter(Boolean).join(' + ') || 'No media'}</div></>,
         item.speaker,
       ]}
       fields={[
         { key: 'date', label: 'Date' },
         { key: 'speaker', label: 'Speaker' },
         { key: 'title', label: 'Title', full: true },
-        { key: 'audio', label: 'Audio URL', full: true },
+        { key: 'audio', label: 'Audio URL (mp3 / Dropbox / hosted file)', full: true },
+        { key: 'video', label: 'Video URL (YouTube / Vimeo / embed link)', full: true },
       ]}
       onSaveAll={(next) => persist((d) => { d.sermons = next; return d })}
     />
@@ -387,48 +430,56 @@ function BeliefsEditor() {
 
 function HolyEditor() {
   const { site, persist } = useCMS()
+  const year = site.calendarYear || '2027'
+  const calendarKey = `calendar${year}`
   const holyDays = site.holyDays || []
-  const calendar = site.calendar2026 || []
+  const calendar = site[calendarKey] || site.calendar2027 || []
 
   return (
     <>
       <div className="admin-panel">
-        <div className="admin-panel-head"><h2>Holy Days intro</h2></div>
-        <Field label="Intro paragraphs (separate with blank line)" full>
-          <textarea
-            rows={6}
-            value={(site.holyIntro || []).join('\n\n')}
-            onChange={(e) => persist((d) => {
-              d.site.holyIntro = e.target.value.split(/\n\n+/).map((p) => p.trim()).filter(Boolean)
-              return d
-            })}
-          />
-        </Field>
-        <Field label="Calendar download image URL" full>
-          <input
-            value={site.calendarDownload || ''}
-            onChange={(e) => persist((d) => { d.site.calendarDownload = e.target.value; return d })}
-          />
-        </Field>
+        <div className="admin-panel-head"><h2>Holy Days intro & year</h2></div>
+        <p className="admin-hint">Official reference: <a href="https://www.cgi.org/holy-days" target="_blank" rel="noreferrer">cgi.org/holy-days</a>. Set the active year (e.g. 2027) and edit that year’s dates below.</p>
+        <div className="admin-fields">
+          <Field label="Active calendar year">
+            <input value={year} onChange={(e) => persist((d) => { d.site.calendarYear = e.target.value; return d })} />
+          </Field>
+          <Field label="Calendar download / official link" full>
+            <input
+              value={site.calendarDownload || ''}
+              onChange={(e) => persist((d) => { d.site.calendarDownload = e.target.value; return d })}
+            />
+          </Field>
+          <Field label="Intro paragraphs (separate with blank line)" full>
+            <textarea
+              rows={6}
+              value={(site.holyIntro || []).join('\n\n')}
+              onChange={(e) => persist((d) => {
+                d.site.holyIntro = e.target.value.split(/\n\n+/).map((p) => p.trim()).filter(Boolean)
+                return d
+              })}
+            />
+          </Field>
+        </div>
       </div>
 
       <ListCrud
         title={`Holy day details (${holyDays.length})`}
         items={holyDays}
         columns={['Name', 'Meaning']}
-        blank={{ name: '', meaning: '', scriptures: '', body: '' }}
-        renderRow={(item) => [item.name, <span className="muted">{(item.meaning || '').slice(0, 80)}</span>]}
+        blank={{ name: '', summary: '', meaning: '', scriptures: '', body: '' }}
+        renderRow={(item) => [item.name, <span className="muted">{(item.summary || item.meaning || '').slice(0, 80)}</span>]}
         fields={[
           { key: 'name', label: 'Name' },
+          { key: 'summary', label: 'Short summary' },
           { key: 'scriptures', label: 'Scriptures' },
-          { key: 'meaning', label: 'Meaning', type: 'textarea', full: true },
           { key: 'body', label: 'Body', type: 'textarea', full: true },
         ]}
         onSaveAll={(next) => persist((d) => { d.site.holyDays = next; return d })}
       />
 
       <ListCrud
-        title={`Calendar dates (${calendar.length})`}
+        title={`${year} calendar dates (${calendar.length})`}
         items={calendar}
         columns={['Name', 'Date', 'Ends']}
         blank={{ name: '', date: '', ends: '' }}
@@ -438,9 +489,88 @@ function HolyEditor() {
           { key: 'date', label: 'Date' },
           { key: 'ends', label: 'Ends' },
         ]}
-        onSaveAll={(next) => persist((d) => { d.site.calendar2026 = next; return d })}
+        onSaveAll={(next) => persist((d) => { d.site[calendarKey] = next; return d })}
       />
     </>
+  )
+}
+
+function MemorialEditor() {
+  const { content, persist } = useCMS()
+  const pages = content.memorialPages || []
+  const settings = content.settings || {}
+  return (
+    <>
+      <div className="admin-panel">
+        <div className="admin-panel-head"><h2>Memorial menu settings</h2></div>
+        <div className="admin-fields">
+          <Field label="Menu label">
+            <input
+              value={settings.memorialMenuLabel || 'In Memory'}
+              onChange={(e) => persist((d) => { d.settings = { ...d.settings, memorialMenuLabel: e.target.value }; return d })}
+            />
+          </Field>
+          <Field label="Show in main menu">
+            <select
+              value={settings.showMemorialInMenu === false ? 'no' : 'yes'}
+              onChange={(e) => persist((d) => { d.settings = { ...d.settings, showMemorialInMenu: e.target.value === 'yes' }; return d })}
+            >
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </Field>
+        </div>
+      </div>
+      <ListCrud
+        title={`Memorial / special pages (${pages.length})`}
+        items={pages}
+        columns={['Title', 'Honoree', 'Slug']}
+        blank={{ slug: 'in-memory', title: 'In Loving Memory', subtitle: '', honoree: '', dates: '', body: '', image: '', published: true }}
+        renderRow={(item) => [item.title, item.honoree || '—', `/in-memory/${item.slug}`]}
+        fields={[
+          { key: 'title', label: 'Page title' },
+          { key: 'slug', label: 'URL slug (e.g. john-smith)' },
+          { key: 'subtitle', label: 'Subtitle / eyebrow' },
+          { key: 'honoree', label: 'Name being honored' },
+          { key: 'dates', label: 'Dates (e.g. 1940 – 2026)' },
+          { key: 'image', label: 'Image URL', full: true },
+          { key: 'body', label: 'Tribute / page body', type: 'textarea', full: true },
+        ]}
+        onSaveAll={(next) => persist((d) => { d.memorialPages = next; return d })}
+      />
+    </>
+  )
+}
+
+function BibleSettingsEditor() {
+  const { content, persist } = useCMS()
+  const settings = content.settings || {}
+  const enabled = settings.bibleEnabledVersions || ['kjv', 'web', 'NKJV', 'NIV']
+  function toggleVersion(id) {
+    const next = enabled.includes(id) ? enabled.filter((item) => item !== id) : [...enabled, id]
+    persist((d) => { d.settings = { ...d.settings, bibleEnabledVersions: next }; return d })
+  }
+  return (
+    <div className="admin-panel">
+      <div className="admin-panel-head"><h2>Bible versions</h2></div>
+      <p className="admin-hint">Choose which translations appear in the Bible reader. KJV/WEB are most reliable. NKJV and NIV depend on third-party availability.</p>
+      <Field label="Default version">
+        <select
+          value={settings.bibleDefaultVersion || 'kjv'}
+          onChange={(e) => persist((d) => { d.settings = { ...d.settings, bibleDefaultVersion: e.target.value }; return d })}
+        >
+          {BIBLE_VERSIONS.map((version) => <option key={version.id} value={version.id}>{version.label}</option>)}
+        </select>
+      </Field>
+      <div className="admin-fields" style={{ marginTop: 16 }}>
+        {BIBLE_VERSIONS.map((version) => (
+          <label key={version.id} style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+            <input type="checkbox" checked={enabled.includes(version.id)} onChange={() => toggleVersion(version.id)} />
+            <span>{version.label}</span>
+          </label>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -686,12 +816,15 @@ function AdminShell() {
 
           {section === 'dashboard' && <Dashboard />}
           {section === 'site' && <SiteEditor />}
+          {section === 'prayer' && <PrayerEditor />}
           {section === 'hero' && <HeroEditor />}
           {section === 'ticker' && <TickerEditor />}
           {section === 'sermons' && <SermonsEditor />}
           {section === 'events' && <EventsEditor />}
           {section === 'beliefs' && <BeliefsEditor />}
           {section === 'holy' && <HolyEditor />}
+          {section === 'memorial' && <MemorialEditor />}
+          {section === 'bible' && <BibleSettingsEditor />}
           {section === 'ministry' && <MinistryEditor />}
           {section === 'contact' && <ContactEditor />}
           {section === 'donate' && <DonateEditor />}
